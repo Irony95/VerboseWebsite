@@ -14,3 +14,10 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
 .navbar {
     background-color: #372948;
 }
+
+:root {
+    --themecolor1: #251B37;
+    --themecolor2: #372948;
+    --themecolor3: #FFCACA;
+    --themecolor4: #FFECEF;
+  }
