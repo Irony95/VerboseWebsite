@@ -1,0 +1,16 @@
+/* 
+the color palette
+https://colorhunt.co/palette/251b37372948ffcacaffecef 
+#251B37
+#372948
+#FFCACA
+#FFECEF
+*/
+#main {
+    height: 100vh;
+    background-color: #FFCACA;
+}
+
+.navbar {
+    background-color: #372948;
+}

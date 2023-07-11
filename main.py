@@ -5,9 +5,6 @@ app = Flask(__name__)
 def home():
    return render_template('index.html')
 
-@app.route('/style.css')
-def css():
-   return render_template('style.css')
 
 @app.get('/getFlashcards')
 def login():
