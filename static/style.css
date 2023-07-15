@@ -6,13 +6,23 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
 #FFCACA
 #FFECEF
 */
+
+
 #main {
     height: 100vh;
     background-color: #FFCACA;
+    overflow-x: hidden;
+}
+
+.outline {
+    border: 2px dotted red;
 }
 
 .navbar {
-    background-color: #372948;
+    background-color: var(--themecolor1);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 :root {
@@ -21,3 +31,26 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
     --themecolor3: #FFCACA;
     --themecolor4: #FFECEF;
 }
+
+.Attachfile {
+    flex: 1;
+    background-color: var(--themecolor4);
+    height: 60vh;
+    color: #888;
+}
+
+@media screen and (max-width: 600px) {
+
+    /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+    .mobile-hide {
+    display: none !important;
+    }
+}
+@keyframes fadeInAnimation {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}  

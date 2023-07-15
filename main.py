@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-   return render_template('upload.html')
+   return render_template('home.html')
 
 @app.route('/upload')
 def upload():

@@ -5,33 +5,18 @@
 
 {% block content %}
 <div id="main">
-  <style>
-    body,
-    html {
-      height: calc(100% - 57.5px);
-    }
+  <div class="d-flex align-items-center justify-content-center p-3 h-100">
+    <div class="w-100">
+      <input class="Attachfile w-100" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
 
-    .Attachfile {
-      flex: 1;
-      background-color: var(--themecolor4);
-      min-height: calc(100vh - 57.5px - 64px - 3rem);
-      color: #888;
-    }
+      <div class="d-flex justify-content-center w-100">
+        <button class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill">Generate</button>
+      </div>
 
-    .uploadcontainer {
-      padding-top: 57.5px;
-      min-height: 100vh;
-    }
-  </style>
-  <div class="container-md uploadcontainer justify-content-center">
-    <div class="Attachfile m-3 d-flex flex-row justify-content-center align-items-center rounded-4">
-      ATTACH FILE</div>
-    <div class="text-center">
-      <button class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill">Upload</button>
     </div>
   </div>
 </div>
-</body>
 {% endblock %}
 
 </html>
