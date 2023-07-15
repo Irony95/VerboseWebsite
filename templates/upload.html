@@ -4,17 +4,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="main">
-  <div class="d-flex align-items-center justify-content-center p-3 h-100">
-    <div class="w-100">
-      <input class="Attachfile w-100" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
 
-      <div class="d-flex justify-content-center w-100">
-        <button class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill">Generate</button>
+<div id="main">
+  <div class="d-flex align-items-center justify-content-center p-3 h-100 ">
+    <form class="w-100 m-3" method="post" action="/upload" id="uploadedForm" enctype="multipart/form-data">
+      <div id="file-drop-area" class="d-flex Attachfile align-items-center justify-content-center border rounded-3 ">
+        <input id="fileUpload" name="fileUpload" type="file"
+         style="position: absolute; opacity: 0; height: 60vh; width: 95%;" accept="application/pdf"/>
+
+        <div class="text-center">
+          <i class="bi bi-upload" style="font-size: 5em;"></i>
+          <p id="uploadMessage">select, or drop a file here</p>
+        </div>
       </div>
 
-    </div>
+      <script>
+        let imageUpload = document.getElementById("fileUpload");
+        let uploadMsg = document.getElementById("uploadMessage");
+        // display file name if file has been selected
+        imageUpload.onchange = function() {
+          let input = this.files[0];
+          let text;
+          if (input) {
+            //process input
+            text = imageUpload.value.replace("C:\\fakepath\\", "");
+          } else {
+            text = "Please select a file";
+          }
+          uploadMsg.innerHTML = text;
+        };
+      </script>
+
+      <div class="d-flex justify-content-center w-100">
+        <input type="submit" class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill" value="Generate"/>
+      </div>
+
+    </form>
+
   </div>
 </div>
 {% endblock %}

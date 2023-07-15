@@ -14,8 +14,8 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
     overflow-x: hidden;
 }
 
-.outline {
-    border: 2px dotted red;
+.redOutline {
+    border: 5px dotted red;
 }
 
 .navbar {
@@ -33,7 +33,6 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
 }
 
 .Attachfile {
-    flex: 1;
     background-color: var(--themecolor4);
     height: 60vh;
     color: #888;
