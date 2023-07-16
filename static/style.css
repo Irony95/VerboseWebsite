@@ -9,7 +9,7 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
 
 
 #main {
-    height: 100vh;
+    
     background-color: #FFCACA;
     overflow-x: hidden;
 }
@@ -38,6 +38,76 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
     color: #888;
 }
 
+#learnPdfList {
+    padding-top: 57.5px;
+    background-color: var(--themecolor2);
+    overflow: hidden;
+}
+.nav-link.active {
+    background-color: var(--themecolor1) !important;
+    border-width: 0px !important;
+}
+
+.card-body {
+    background-color: var(--themecolor4);
+    text-align: center;
+    transition: transform 0.2s;
+
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.card-body:hover {
+    transform: scale(1.1);
+}
+
+.card {
+    width: 15em;
+    height: 10em;
+    animation: fadeInAnimation ease 1s, MoveUpDown ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#popupCard {
+    background-color: transparent;
+    border: 0px;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+#popupInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    
+}
+  
+.flipCard {
+    transform: rotateY(180deg);
+}
+  
+/* Position the front and back side */
+#popupFront, #popupBack {
+    background-color:var(--themecolor4);
+    border-radius: 2em;
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2em;
+    font-weight: bold;
+
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
 @media screen and (max-width: 600px) {
 
     /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
@@ -46,10 +116,19 @@ https://colorhunt.co/palette/251b37372948ffcacaffecef
     }
 }
 @keyframes fadeInAnimation {
-0% {
-    opacity: 0;
-}
-100% {
-    opacity: 1;
-}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }  
+
+@keyframes MoveUpDown {
+    0% {
+      bottom: 2em;
+    }
+    100% {
+      bottom: 0em;
+    }
+  }

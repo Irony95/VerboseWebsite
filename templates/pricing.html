@@ -1,86 +1,83 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="main">
-  <style>
-    body,
-    html {
-      height: calc(100% - 57.5px);
-      margin: 0px;
-    }
+<style>
+  body,
+  html {
+    height: calc(100% - 57.5px);
+    margin: 0px;
+  }
 
-    .toppadding {
-      padding-top: 57.5px;
-    }
+  .toppadding {
+    padding-top: 57.5px;
+  }
 
-    .col2 {
-      background-color: var(--themecolor2);
-      border-radius: 1rem;
-    }
-  </style>
+  .col2 {
+    background-color: var(--themecolor2);
+    border-radius: 1rem;
+  }
+</style>
 
-  <div class="container-sm toppadding">
-    <div class="row row-cols-1 row-cols-md-3 p-3">
-      <div class="col-md-4 p-2">
-        <div class="col2 p-3 border border-white text-white">
-          <h1 class="text-left m-1" id="headingrow1">Free trial</h1>
-          <p class="text-left m-1" id="inforow1">Experience our service risk-free. Full access to most features at no
-            cost.
-            Give it a
-            try and start your journey with us today!</p>
-          <div class="text-center m-2">
-            <a class="btn btn-light d-inline-block rounded-pill w-100" aria-current="page" href="/upload">Try now</a>
-          </div>
-          <p class="small mb-0">Terms and conditions apply.</p>
+<div class="container-sm toppadding" style="height: 100vh;">
+  <div class="row row-cols-1 row-cols-md-3 p-3">
+    <div class="col-md-4 p-2">
+      <div class="col2 p-3 border border-white text-white">
+        <h1 class="text-left m-1" id="headingrow1">Free trial</h1>
+        <p class="text-left m-1" id="inforow1">Experience our service risk-free. Full access to most features at no
+          cost.
+          Give it a
+          try and start your journey with us today!</p>
+        <div class="text-center m-2">
+          <a class="btn btn-light d-inline-block rounded-pill w-100" aria-current="page" href="/upload">Try now</a>
         </div>
+        <p class="small mb-0">Terms and conditions apply.</p>
       </div>
-      <div class="col-md-4 p-2">
-        <div class="col2 p-3 border border-white text-white">
-          <h1 class="text-left m-1" id="headingrow2">1 month plan</h1>
-          <p class="text-left m-1" id="inforow2">Get a feel for our offerings. This plan gives you full access to all
-            features for one
-            month. Subscribe and start your Verbose journey with us!</p>
-          <div class="text-center m-2">
-            <a class="btn btn-light d-inline-block  rounded-pill w-100" aria-current="page" href="/upload">Subscribe</a>
-          </div>
-          <p class="small mb-0">Terms and conditions apply.</p>
-        </div>
-      </div>
-      <div class="col-md-4 p-2">
-        <div class="col2 p-3 border border-white text-white">
-          <h1 class="text-left m-1" id="headingrow3">1 year plan</h1>
-          <p class="text-left m-1" id="inforow3">Get the most out of our offerings with an annual commitment. This plan
-            allows
-            uninterrupted access for a year and is our best value option. Embrace the future, subscribe today!</p>
-          <div class="text-center m-2">
-            <a class="btn btn-light d-inline-block  rounded-pill w-100" aria-current="page" href="/upload">Subscribe</a>
-          </div>
-          <p class="small mb-0">Terms and conditions apply.</p>
-        </div>
-      </div>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script>
-        function winresize() {
-          $('#inforow1, #inforow2, #inforow3, #headingrow1, #headingrow2, #headingrow3').css('height', 'auto');
-
-          var maxinfoHeight = Math.max($('#inforow1').outerHeight(), $('#inforow2').outerHeight(), $('#inforow3').outerHeight());
-          $('#inforow1, #inforow2, #inforow3').css('height', maxinfoHeight);
-
-          var maxHeadingHeight = Math.max($('#headingrow1').outerHeight(), $('#headingrow2').outerHeight(), $('#headingrow3').outerHeight());
-          $('#headingrow1, #headingrow2, #headingrow3').css('height', maxHeadingHeight);
-
-          console.log("Window resized, height is ", $('#inforow1').outerHeight());
-        };
-
-        $(window).on('resize', winresize);
-
-        winresize();
-      </script>
     </div>
+    <div class="col-md-4 p-2">
+      <div class="col2 p-3 border border-white text-white">
+        <h1 class="text-left m-1" id="headingrow2">1 month plan</h1>
+        <p class="text-left m-1" id="inforow2">Get a feel for our offerings. This plan gives you full access to all
+          features for one
+          month. Subscribe and start your Verbose journey with us!</p>
+        <div class="text-center m-2">
+          <a class="btn btn-light d-inline-block  rounded-pill w-100" aria-current="page" href="/upload">Subscribe</a>
+        </div>
+        <p class="small mb-0">Terms and conditions apply.</p>
+      </div>
+    </div>
+    <div class="col-md-4 p-2">
+      <div class="col2 p-3 border border-white text-white">
+        <h1 class="text-left m-1" id="headingrow3">1 year plan</h1>
+        <p class="text-left m-1" id="inforow3">Get the most out of our offerings with an annual commitment. This plan
+          allows
+          uninterrupted access for a year and is our best value option. Embrace the future, subscribe today!</p>
+        <div class="text-center m-2">
+          <a class="btn btn-light d-inline-block  rounded-pill w-100" aria-current="page" href="/upload">Subscribe</a>
+        </div>
+        <p class="small mb-0">Terms and conditions apply.</p>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function winresize() {
+        $('#inforow1, #inforow2, #inforow3, #headingrow1, #headingrow2, #headingrow3').css('height', 'auto');
+
+        var maxinfoHeight = Math.max($('#inforow1').outerHeight(), $('#inforow2').outerHeight(), $('#inforow3').outerHeight());
+        $('#inforow1, #inforow2, #inforow3').css('height', maxinfoHeight);
+
+        var maxHeadingHeight = Math.max($('#headingrow1').outerHeight(), $('#headingrow2').outerHeight(), $('#headingrow3').outerHeight());
+        $('#headingrow1, #headingrow2, #headingrow3').css('height', maxHeadingHeight);
+
+        console.log("Window resized, height is ", $('#inforow1').outerHeight());
+      };
+
+      $(window).on('resize', winresize);
+
+      winresize();
+    </script>
   </div>
 </div>
-</body>
 {% endblock %}
 
 </html>

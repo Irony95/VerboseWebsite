@@ -4,62 +4,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="main">
-  <style>
-    body,
-    html {
-      height: calc(100% - 57.5px);
-      margin: 0px;
-      margin-bottom: -57.5px;
-    }
 
-    .flex-container {
-      display: flex;
-      flex-direction: column;
-      height: calc(100% - 57.5px);
-      padding-top: 57.5px; 
-      margin-bottom: -57.5px;
-      /* margin-top: 16px;
-          margin-bottom: 16px; */
-    }
+<ul class="nav nav-tabs" id="learnPdfList" role="tablist">
+</ul>
 
-    .rows {
-      margin: 1rem;
-      padding: 1rem;
-      color: #fff;
-      display: flex;
-      min-height: 64px;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-width: 20%;
-    }
+<div class="container pt-3" style="height: 100vh;">
+  <div class="row" id="cardsList">
+  </div>
+</div>
 
-    .Attachfile {
-      flex: 3;
-      border-radius: 16px;
-      background-color: var(--themecolor4);
-      color: #888;
-    }
+<!-- Modal -->
+<div class="modal fade" id="flashcardModal" style="overflow: hidden;">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div id="popupCard" class="modal-content flip-card" style="width: 100vw; height: 70vh;">
 
-    .Button {
-      background-color: #372948;
-      color: #FFF;
-      border: 2px solid #fff;
-      border-radius: 10000px;
-      max-height: 20%;
-      max-width: 50%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
-  <div id="main" class="outline">
-    <div class="container-md border flex-container">
-      <div class="rows Attachfile">learnpage(WIP)</div>
-      <!-- <button class="rows Button">Upload</button> -->
+      <div id="popupInner" style="height: 100%;">
+        <div id="popupFront" class="modal-body">
+          this is a test
+        </div>
+  
+        <div id="popupBack" class="modal-body" style="transform: rotateY(180deg);">
+          this is a testsdfsdf
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>
+
+<script src="{{url_for('static', filename='learn.js')}}"></script>
 {% endblock %}
 
 </html>

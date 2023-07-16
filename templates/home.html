@@ -43,21 +43,22 @@
         color: var(--themecolor4);
     }
 </style>
-<div id="main">
-    <div id="titleContainer" class="d-flex align-items-center justify-content-center">
-        <div class="">
-            <h1 id="title">Verbose</h1>
-            <p id="tagline">Study smart, study better</p>
-        </div>
-        <img id="studyingImage" class="mobile-hide img-fluid" src="{{url_for('static', filename='studying.png')}}"/>
+
+<div id="titleContainer" class="d-flex align-items-center justify-content-center">
+    <div class="">
+        <h1 id="title">Verbose</h1>
+        <p id="tagline">Study smart, study better</p>
     </div>
-    <div id="fade"></div>
-    <div id="description">
-        <div class="container">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nam alias corporis, error veritatis explicabo. Explicabo sit et dolore, repudiandae reprehenderit sint aperiam adipisci fugiat corrupti, beatae amet magnam cum.</p>
-        </div>
+    <img id="studyingImage" class="mobile-hide img-fluid" src="{{url_for('static', filename='studying.png')}}"/>
+</div>
+
+<div id="fade"></div>
+<div id="description">
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nam alias corporis, error veritatis explicabo. Explicabo sit et dolore, repudiandae reprehenderit sint aperiam adipisci fugiat corrupti, beatae amet magnam cum.</p>
     </div>
 </div>
+
 {% endblock %}
 
 </html>
