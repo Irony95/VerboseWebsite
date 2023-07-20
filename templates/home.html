@@ -36,14 +36,14 @@
     }
 
     #fade {
-        height: 20vh;
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--themecolor2));
+        height: 10vh;
+        background-image: linear-gradient(to bottom, var(--themecolor3), var(--themecolor2));
     }
 
     #description {
-        padding-top: 5%;
-        background-color: var(--themecolor1);
-        height: 100vh;
+        padding: 1rem;
+        background-color: var(--themecolor2);
+        height: min-content;
     }
 
     .btn {
@@ -51,7 +51,7 @@
     }
 
     .col2 {
-        background-color: var(--themecolor2);
+        background-color: var(--themecolor1);
         border-radius: 1rem;
     }
 
@@ -63,8 +63,12 @@
         white-space: nowrap;
     }
 
-    .whypremiumtext{
+    .whypremiumtext {
         min-width: 250px;
+    }
+
+    #pricingcont {
+        background-color: var(--themecolor2);
     }
 </style>
 
@@ -80,59 +84,57 @@
     <img id="studyingImage" class="mobile-hide img-fluid" src="{{url_for('static', filename='studying.png')}}" />
 </div>
 <div id="fade"></div>
-<div id="description">
-    <div class="container">
-        <h1 class="text-light text-center"><strong>Why go premium?</strong></h1>
-        <div class="row text-center text-light">
-            <div class="col-sm-6 col-xs-12 p-3">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="rounded-circle m-2"
-                        style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3);">
-                        <img id="logo1" class="m-2" src="{{url_for('static', filename='account-31694.svg')}}"
-                            height="40" width="40" alt="logo1">
-                    </div>
-                    <div class="m-2 whypremiumtext">Share your deck with your friends.</div>
+<div id="description" class="container-fluid">
+    <h1 class="text-light text-center p-3"><strong>Why go premium?</strong></h1>
+    <div class="row text-center text-light">
+        <div class="col-md-6 col-sm-12 p-3">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="rounded-circle m-2"
+                    style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3); min-width: 100px;">
+                    <img id="logo1" class="m-2" src="{{url_for('static', filename='account-31694.svg')}}" height="40"
+                        width="40" alt="logo1">
                 </div>
+                <div class="m-2 whypremiumtext">Share your deck with your friends.</div>
             </div>
-            <div class="col-sm-6 col-xs-12 p-3">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="rounded-circle m-2"
-                        style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3);">
-                        <img id="logo1" class="m-2" src="{{url_for('static', filename='alarm-31701.svg')}}" height="40"
-                            width="40" alt="logo2">
-                    </div>
-                    <div class="m-2 whypremiumtext">Faster generation engine.</div>
+        </div>
+        <div class="col-md-6 col-sm-12 p-3">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="rounded-circle m-2"
+                    style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3); min-width: 100px">
+                    <img id="logo1" class="m-2" src="{{url_for('static', filename='alarm-31701.svg')}}" height="40"
+                        width="40" alt="logo2">
+                </div>
+                <div class="m-2 whypremiumtext">Faster generation engine.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center text-light">
+        <div class="col-md-6 col-sm-12 p-3">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="rounded-circle m-2"
+                    style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3); min-width: 100px">
+                    <img id="logo1" class="m-2" src="{{url_for('static', filename='cloud-31839.svg')}}" height="40"
+                        width="40" alt="logo3">
+                </div>
+                <div class="well m-2 whypremiumtext">
+                    <p>Save your flashcards to the cloud.</p>
+                    <p>Access anywhere.</p>
                 </div>
             </div>
         </div>
-        <div class="row text-center text-light">
-            <div class="col-sm-6 col-xs-12 p-3">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="rounded-circle m-2"
-                        style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3);">
-                        <img id="logo1" class="m-2" src="{{url_for('static', filename='cloud-31839.svg')}}" height="40"
-                            width="40" alt="logo3">
-                    </div>
-                    <div class="well m-2 whypremiumtext">
-                        <p>Save your flashcards to the cloud.</p>
-                        <p>Access anywhere.</p>
-                    </div>
+        <div class="col-md-6 col-sm-12 p-3">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="rounded-circle m-2"
+                    style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3); min-width: 100px">
+                    <img id="logo1" class="m-2" src="{{url_for('static', filename='filter-31899.svg')}}" height="40"
+                        width="40" alt="logo4">
                 </div>
-            </div>
-            <div class="col-sm-6 col-xs-12 p-3">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="rounded-circle m-2"
-                        style="width: 100px;height: 100px;display: flex;justify-content: center;align-items: center; background-color: var(--themecolor3);">
-                        <img id="logo1" class="m-2" src="{{url_for('static', filename='filter-31899.svg')}}"
-                            height="40" width="40" alt="logo4">
-                    </div>
-                    <div class="well m-2 whypremiumtext">More flashcard customizability.</div>
-                </div>
+                <div class="well m-2 whypremiumtext">More flashcard customizability.</div>
             </div>
         </div>
     </div>
 </div>
-<div class="container">
+<div id="pricingcont" class="container-fluid">
     <div id="pricingmenu" class="row row-cols-1 row-cols-md-3 p-3">
         <div class="col-md-4 p-2">
             <div class="col2 p-3 border border-white text-white">
