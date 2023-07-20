@@ -4,19 +4,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<style>
-  .btn {
-    border-radius: 10000px;
-  }
-</style>
-
-
-<div class="d-flex align-items-center justify-content-center p-3" style="height: 100vh;">
+<div class="d-flex align-items-center p-3" style="height: 100vh;">
   <form class="w-100 m-3" method="post" action="/upload" id="uploadedForm" enctype="multipart/form-data">
     <div id="file-drop-area" class="d-flex Attachfile align-items-center justify-content-center border rounded-3 ">
       <input id="fileUpload" name="fileUpload" type="file"
-        style="position: absolute; opacity: 0; height: 60vh; width: 95%;" accept="application/pdf" />
+        style="position: absolute; opacity: 0; height: 60vh; width: 95%;" accept="application/pdf"/>
 
       <div class="text-center">
         <i class="bi bi-upload" style="font-size: 5em;"></i>
@@ -28,8 +20,7 @@
       let imageUpload = document.getElementById("fileUpload");
       let uploadMsg = document.getElementById("uploadMessage");
       // display file name if file has been selected
-      imageUpload.onchange = function () {
-
+      imageUpload.onchange = function() {
         let input = this.files[0];
         let text;
         if (input) {
@@ -43,7 +34,8 @@
     </script>
 
     <div class="d-flex justify-content-center w-100">
-      <input type="submit" class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill" value="Generate" />
+      <input type="submit" class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill" name="gen" value="Generate"/>
+      <input type="submit" class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill" name="ask" value="Ask Question"/>
     </div>
 
   </form>
