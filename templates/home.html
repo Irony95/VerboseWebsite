@@ -58,6 +58,7 @@
 
     .btn {
         border-radius: 10000px;
+        max-width: 400px;
     }
 
     br {
@@ -71,12 +72,28 @@
     #pricingcont {
         background-color: var(--themecolor2);
     }
+
+    .h3-mktg {
+        font-size: 48px !important;
+        line-height: 52px !important;
+        letter-spacing: -0.03em !important;
+        font-weight: 800 !important;
+    }
+
+    .height-full {
+        height: 100% !important;
+    }
+
+    .text-mono {
+        font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace !important;
+        color: darkgrey;
+    }
 </style>
 
 <div id="titleContainer" class="d-flex align-items-center justify-content-center">
     <div class="">
         <h1 id="title">Verbose</h1>
-        <p id="tagline">Study smart with your AI study buddy.</p>
+        <p id="tagline">Study smart, study better.</p>
         <div class="">
             <div class="btn btn-dark m-1">Get Started</div>
             <div class="btn btn-outline-secondary m-1">View Plans</div>
@@ -135,65 +152,76 @@
         </div>
     </div>
 </div>
-<div id="pricingcont" class="container-fluid">
-    <div id="pricingmenu" class="row row-cols-1 row-cols-md-3 px-3 py-5">
-        <div class="col-md-4 p-2">
-            <div class="col2 p-3 border border-white text-white">
+<div id="pricingcont" class="container-fluid p-3">
+    <div id="pricingmenu"
+        class="row row-cols-1 row-cols-md-3 d-flex flex-column flex-sm-row gutter gutter-spacious flex-justify-between mt-3 pb-4 px-3">
+        <div class="col-md-4 mt-2">
+            <div class="col2 p-3 border border-white text-white p-2 d-flex flex-column height-full">
                 <h1 class="text-left m-1" id="headingrow1">Free trial</h1>
-                <p class="text-left m-1" id="inforow1">Experience our service risk-free. Full access to most features at
+                <p class="text-left m-1 mb-3" id="inforow1">Experience our service risk-free. Full access to most
+                    features at
                     no cost. Give it a try and start your journey with us today!</p>
-                <div class="text-center m-2">
+                <div class="text-center m-2 mb-0 mt-auto">
                     <a class="btn btn-light d-inline-block w-100" aria-current="page" href="/upload">Try
                         now</a>
                 </div>
-                <p class="small mb-0">Terms and conditions apply.</p>
+                <p class="small mb-0 mt-1">Terms and conditions apply.</p>
             </div>
         </div>
-        <div class="col-md-4 p-2">
-            <div class="col2 p-3 border border-white text-white">
+        <div class="col-md-4 mt-2">
+            <div class="col2 p-3 border border-white text-white p-2 d-flex flex-column height-full">
                 <h1 class="text-left m-1" id="headingrow2">1 month plan</h1>
-                <p class="text-left m-1" id="inforow2">Get a feel for our offerings. This plan gives you full access to
+                <p class="text-left m-1 mb-3" id="inforow2">Get a feel for our offerings. This plan gives you full
+                    access to
                     all features for one month. Subscribe and start your Verbose journey with us!</p>
-                <div class="text-center m-2">
+                <div class="text-center m-2 mb-0 mt-auto">
                     <a class="btn btn-light d-inline-block w-100" aria-current="page" href="/upload">Subscribe</a>
                 </div>
-                <p class="small mb-0">Terms and conditions apply.</p>
+                <p class="small mb-0 mt-1">Terms and conditions apply.</p>
             </div>
         </div>
-        <div class="col-md-4 p-2">
-            <div class="col2 p-3 border border-white text-white">
+        <div class="col-md-4 mt-2">
+            <div class="col2 p-3 border border-white text-white p-2 d-flex flex-column height-full">
                 <h1 class="text-left m-1" id="headingrow3">1 year plan</h1>
-                <p class="text-left m-1" id="inforow3">Get the most out of our offerings with an annual commitment. This
+                <p class="text-left m-1 mb-3" id="inforow3">Get the most out of our offerings with an annual commitment.
+                    This
                     plan allows uninterrupted access for a year and is our best value option. Embrace the future,
                     subscribe today!</p>
-                <div class="text-center m-2">
+                <div class="text-center m-2 mb-0 mt-auto">
                     <a class="btn btn-light d-inline-block  w-100" aria-current="page" href="/upload">Subscribe</a>
                 </div>
-                <p class="small mb-0">Terms and conditions apply.</p>
+                <p class="small mb-0 mt-1">Terms and conditions apply.</p>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-            function winresize() {
-                $('#inforow1, #inforow2, #inforow3, #headingrow1, #headingrow2, #headingrow3').css('height', 'auto');
-
-                var maxinfoHeight = Math.max($('#inforow1').outerHeight(), $('#inforow2').outerHeight(), $('#inforow3').outerHeight());
-                $('#inforow1, #inforow2, #inforow3').css('height', maxinfoHeight);
-
-                var maxHeadingHeight = Math.max($('#headingrow1').outerHeight(), $('#headingrow2').outerHeight(), $('#headingrow3').outerHeight());
-                $('#headingrow1, #headingrow2, #headingrow3').css('height', maxHeadingHeight);
-
-                console.log("Window resized, height is ", $('#inforow1').outerHeight());
-            };
-
-            $(window).on('resize', winresize);
-
-            winresize();
-        </script>
     </div>
 </div>
 
+<div class="d-flex flex-column flex-sm-row gutter gutter-spacious flex-justify-between p-3"
+    style="background-color: var(--themecolor2); color: white;">
+    <div class="col-12 col-sm-6">
+        <div class="pt-4 pt-md-8 border-top d-flex flex-column height-full flex-justify-start">
+            <span class="h3-mktg mb-n3">”</span>
+            <h3 class="f2-mktg color-fg-default">Verbose works shockingly well. I will never study without it again.
+            </h3>
+            <p class="text-mono f4-mktg color-fg-muted pt-5 mt-auto">
+                Amos Lee Jia Jun
 
+            </p>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6">
+        <div class="pt-4 pt-md-8 border-top d-flex flex-column height-full flex-justify-start">
+            <span class="h3-mktg mb-n3">”</span>
+            <h3 class="f2-mktg color-fg-default">I was stunned when I started studying with Verbose and it deconstructed
+                the key points from my notes, making them much easier to understand. It was like having my own personal
+                annotator!</h3>
+            <p class="text-mono f4-mktg color-fg-muted pt-5 mt-auto">
+                Gunnika Batra
+                // Senior Analyst
+            </p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
