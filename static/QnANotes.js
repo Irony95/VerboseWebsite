@@ -1,8 +1,9 @@
 loadedFile = ""
-canRun = true
+answers = []
+answerIndex = 0
 
 document.getElementById('question').onkeydown = function(event) {
-    if (event.keyCode == 13 && canRun) {
+    if (event.keyCode == 13) {
         askQuestion()
     }
 }
@@ -36,6 +37,37 @@ function tabsChanged(name) {
     document.getElementById("NotesHeader").innerHTML = `Current file loaded: ${name}`
 }
 
+function decAnswer() {
+    if (answerIndex == 0)
+    {
+        document.getElementById("goUpButton").style.display = "none"
+        return;
+    }
+    document.getElementById("goDownButton").style.display = "block"
+    answerIndex-= 1
+
+    updateAnswer()
+}
+
+function incAnswer() {
+    if (answerIndex == answers.length-1) {
+        document.getElementById("goDownButton").style.display = "none"
+        return;
+    }
+    document.getElementById("goUpButton").style.display = "block"
+    answerIndex += 1
+
+    updateAnswer()
+}
+
+function updateAnswer() {
+    var element = document.getElementById("answer")
+    element.innerHTML = answers[answerIndex]
+    element.style.animation = "none"
+    element.offsetHeight
+    element.style.animation = "fadeInAnimation ease 1s"
+}
+
 function askQuestion() {
     document.getElementById("buttonAsk").disabled = true;
     document.getElementById("buttonText").innerHTML = "Looking";
@@ -57,12 +89,13 @@ function askQuestion() {
     .then(res => res.json())
     .then(json => {
         console.log(json)
-        document.getElementById("answer").innerHTML = json[0]
-        document.getElementById("answer").style.animation = ""
-        document.getElementById("answer").style.animation = "fadeInAnimation ease 1s"
+        answers = json
+        answerIndex = 0
+        updateAnswer()
         document.getElementById("buttonAsk").disabled = false;
         document.getElementById("buttonText").innerHTML = "Ask";
         document.getElementById("buttonSpinner").style.display = "none";
         document.getElementById("question").disabled = false;
+        document.getElementById("goDownButton").style.display = "block"
     })
 }

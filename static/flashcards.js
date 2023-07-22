@@ -53,8 +53,8 @@ function tabsChanged(name) {
             card.classList.add("card")
 
             $(card).click(function() {
-                document.getElementById("popupFront").innerHTML = flashcards[i]["title"]
-                document.getElementById("popupBack").innerHTML = flashcards[i]["answer"]
+                flashcardIndex = i
+                updatePopupCard()
                 $("#flashcardModal").modal('show');
             })
             
@@ -69,4 +69,31 @@ function tabsChanged(name) {
             cardsList.appendChild(column)
         }
     })
+}
+function dismissPopup() {
+    console.log("asdfasdf")
+    $("#flashcardModal").modal('hide');
+}
+
+function goLeft() {
+    if (flashcardIndex == 0) { return }
+    flashcardIndex--
+    updatePopupCard()
+}
+
+function goRight() {
+    if (flashcardIndex == flashcards.length-1) { return }
+    flashcardIndex++
+    updatePopupCard()
+}
+
+function updatePopupCard() {
+    console.log(flashcardIndex)
+    document.getElementById("popupFront").innerHTML = flashcards[flashcardIndex]["title"]
+    document.getElementById("popupBack").innerHTML = flashcards[flashcardIndex]["answer"]
+
+    var popup = document.getElementById("popupCard")
+    popup.style.animation = "none"
+    popup.offsetHeight
+    popup.style.animation = "fadeInAnimation ease 1s, MoveUpDown ease 1s"
 }

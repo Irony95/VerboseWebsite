@@ -9,6 +9,25 @@
   .btn {
     border-radius: 10000px;
   }
+  .flashcardButtons {
+    height: 100%;
+    position: absolute;
+  }
+
+  @media screen and (max-width: 600px) {
+    /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+    .flashcardButtons {
+      height: auto;
+      position: absolute;
+      padding: 0px;
+      margin: 0px;
+      bottom: 0%;
+    }
+    #flashcardModal {
+      padding: 0px;
+      margin: 0px;
+    }
+  }
 </style>
 
 <ul class="nav nav-tabs" id="learnPdfList" role="tablist">
@@ -21,6 +40,13 @@
 
 <!-- Modal -->
 <div class="modal fade" id="flashcardModal" style="overflow: hidden;">
+
+  <div class="d-flex justify-content-between w-100 p-3 flashcardButtons">
+    <button style="font-size: 4em; background-color: transparent; border: none;" onclick="goLeft()">&lt;</button>
+    <div onclick="dismissPopup()" class="w-100 h-100 redOutline" style="font-size: 4em;">‏‏‎ ‎</div>
+    <button style="font-size: 4em; background-color: transparent; border: none;" onclick="goRight()">&gt;</button>
+  </div>
+
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div id="popupCard" class="modal-content flip-card" style="width: 100vw; height: 70vh;">
 
