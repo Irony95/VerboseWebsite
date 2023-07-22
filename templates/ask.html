@@ -4,17 +4,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="d-flex align-items-center justify-content-center p-3" style="height: 20vh;">
-    <h2> Current file loaded: {{file_name}} </h2>
+<ul class="nav nav-tabs" id="learnPdfList" role="tablist">
+</ul>
+
+<div class="d-flex align-items-center justify-content-center p-3 " style="height: 20vh;">
+    <h2 id="NotesHeader"></h2>
 </div>
 
-<div class="d-flex align-items-center justify-content-center p-3" style="height: 20vh;">
-  <form action="/ask" method="post">
-    <input type="hidden" id="file_name" name="file_name" value={{file_name}}>
-    <input type="text" id="question" name="question" placeholder="Ask a question">
-    <input type="submit" value="Ask">
-  </form>
+<div class="d-flex flex-column align-items-center p-3" style="height: 80vh;">
+  <div class="card w-75 m-3" style="background-color: var(--themecolor4); height: 50%;">
+    <div class="d-flex h-100 align-items-center justify-content-center">
+      <p id="answer" class="p-2" style="text-align: center;">answers will go here once asked!</p>
+    </div>
+  </div>
+  <div id="questionForm" class="form-inline w-75 p-3">
+    <input type="text" class="form-control w-75 m-1" id="question" name="question" placeholder="Ask a question">
+    <button id="buttonAsk" class="btn btn-primary m-1" onclick="askQuestion()">
+      <span id="buttonSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+      <span id="buttonText" style="display: inline;">Ask</span>
+    </button>
+  </div>
 </div>
+
+<script src="{{url_for('static', filename='QnANotes.js')}}"></script>
 {% endblock %}
 
 </html>

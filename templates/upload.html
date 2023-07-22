@@ -5,13 +5,15 @@
 
 {% block content %}
 <div class="d-flex align-items-center p-3" style="height: 100vh;">
-  <form class="w-100 m-3" method="post" action="/upload" id="uploadedForm" enctype="multipart/form-data">
+  <form id="uploadForm" class="w-100 m-3" method="post" action="/upload" id="uploadedForm" enctype="multipart/form-data">
     <div id="file-drop-area" class="d-flex Attachfile align-items-center justify-content-center border rounded-3 ">
       <input id="fileUpload" name="fileUpload" type="file"
         style="position: absolute; opacity: 0; height: 60vh; width: 95%;" accept="application/pdf"/>
 
-      <div class="text-center">
-        <i class="bi bi-upload" style="font-size: 5em;"></i>
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <i id="uploadIcon" class="bi bi-upload" style="font-size: 5em;"></i>
+        <span id="buttonSpinner" class="spinner-border m-3"
+         role="status" aria-hidden="true" style="display: none; width: 5rem; height: 5rem;"></span>
         <p id="uploadMessage">select, or drop a file here</p>
       </div>
     </div>
@@ -34,13 +36,24 @@
     </script>
 
     <div class="d-flex justify-content-center w-100">
-      <input type="submit" class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill" name="gen" value="Generate"/>
-      <input type="submit" class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill" name="ask" value="Ask Question"/>
+      <butto id="uploadButton" type="submit" class="btn btn-dark text-center m-3 px-3 py-2 rounded-pill" name="gen" onclick="startWaiting()">
+        Generate
+      </button>
     </div>
 
   </form>
 
 </div>
+
+<script>
+  function startWaiting() {
+    document.getElementById("buttonSpinner").style.display = "block";
+    document.getElementById("uploadButton").disabled = true;
+    document.getElementById("uploadIcon").style.display = "none";
+    document.getElementById("uploadMessage").innerHTML = "Currently Generating, might take some time";
+    document.getElementById("uploadForm").submit();
+  }
+</script>
 {% endblock %}
 
 </html>

@@ -12,7 +12,11 @@ def home():
 
 @app.route('/learn')
 def learn():
-    return render_template('learn.html')
+    return render_template('flashcards.html')
+
+@app.route('/QnANotes')
+def QnANotes():
+    return render_template('ask.html')
 
 
 @app.route('/pricing')
@@ -22,7 +26,7 @@ def pricing():
 
 @app.get('/getNotes')
 def getNotes():
-    notes = ["notes1.pdf", "notes2.pdf", "notes3.pdf"]
+    notes = os.listdir('./sentPDFs')
     return notes
 
 
@@ -39,18 +43,15 @@ def upload():
         if (file_name == ""):
             return render_template('upload.html')
 
-        if 'gen' in request.form:
-            if 'fileUpload' in request.files:
-                # This is the actual pdf
-                file = request.files['fileUpload']
-                if file and file.filename != '':
-                    file.save(os.path.join('./sentPDFs', file.filename))
-            return render_template('learn.html')
-
-        # Brings the user to the ask questions page
-        elif 'ask' in request.form:
-            return render_template('ask.html', file_name=file_name)
-
+        if 'fileUpload' in request.files:
+            # This is the actual pdf
+            file = request.files['fileUpload']
+            if file and file.filename != '':
+                file.save(os.path.join('./sentPDFs', file.filename))
+                print("extracting...")
+                et.extract_note(file.filename)
+                print("extracted")
+        return render_template('upload.html')
 
 @app.get('/getFlashcards')
 def login():
@@ -77,21 +78,23 @@ def login():
 
 @app.post('/ask')
 def ask():
-    if request.method == "POST":
-        # Extract text from note into .txt and pickle file
+    content_type = request.headers.get('Content-Type')
+    if (content_type == 'application/json'):
+        json = request.get_json()
+        print(json)
+    # Extract text from note into .txt and pickle file
         # If it already exists, no extraction is done
         # You can take this as the notes being stored into the cloud (maybe?)
         # TODO: A loading wheel while the note is being processed (may take around 30 seconds~ for long notes)
-        et.extract_note(request.form.get("file_name"))
 
-        note_name = request.form.get("file_name").split(".")[0]
+        note_name = json["file"].split(".")[0]
         # Extract answer from note using question asked
         # Returns each answer as a list, not sure how to proceed from here (is JSON necessary?)
         # Maybe store in a text file in another directory, load as flash cards on the learn page?
         # use SQLite instead? ¯\_(ツ)_/¯
-        answer_list = aq.answer(request.form.get("question"), note_name)
+        answer_list = aq.answer(json["question"], note_name)
+        return answer_list
 
-    return ("d")
 
 
 if __name__ == '__main__':

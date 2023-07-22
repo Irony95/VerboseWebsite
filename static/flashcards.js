@@ -1,9 +1,5 @@
 flashcards = []
 
-// $(document).ready(function(){
-//     $("#flashcardModal").modal('show');
-// });
-
 var flippedBack = false
 var flashcardIndex = 0
 
