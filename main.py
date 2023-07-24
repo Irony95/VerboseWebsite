@@ -93,6 +93,7 @@ def ask():
         # Maybe store in a text file in another directory, load as flash cards on the learn page?
         # use SQLite instead? ¯\_(ツ)_/¯
         answer_list = aq.answer(json["question"], note_name)
+
         return answer_list
 
 

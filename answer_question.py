@@ -6,8 +6,9 @@ import tensorflow as tf
 from keybert import KeyBERT
 from sentence_transformers import SentenceTransformer, util
 
-answer_list = []
+
 def answer(question, note_text):
+    answer_list = []
     embedder = SentenceTransformer('all-MiniLM-L6-v2')
 
     with open(os.getcwd() + "\\" + "\\pickle_notes\\" + note_text + "_pickle", "rb") as fp:  # Unpickling

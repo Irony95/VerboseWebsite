@@ -74,6 +74,8 @@ function askQuestion() {
     document.getElementById("buttonSpinner").style.display = "block";
     document.getElementById("question").disabled = true;
 
+    answers = []
+    answerIndex = 0
     var questionAsked = document.getElementById("question").value
     if (questionAsked.length == 0) { return; }
     fetch("/ask", {
