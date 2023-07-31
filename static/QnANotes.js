@@ -38,24 +38,31 @@ function tabsChanged(name) {
 }
 
 function decAnswer() {
+    answerIndex-= 1
     if (answerIndex == 0)
     {
         document.getElementById("goUpButton").style.display = "none"
-        return;
+    }
+    else
+    {
+        document.getElementById("goUpButton").style.display = "block"
     }
     document.getElementById("goDownButton").style.display = "block"
-    answerIndex-= 1
 
     updateAnswer()
 }
 
 function incAnswer() {
+    answerIndex += 1
     if (answerIndex == answers.length-1) {
         document.getElementById("goDownButton").style.display = "none"
-        return;
+    }
+    else
+    {
+        document.getElementById("goDownButton").style.display = "block"
     }
     document.getElementById("goUpButton").style.display = "block"
-    answerIndex += 1
+
 
     updateAnswer()
 }
