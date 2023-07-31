@@ -1,0 +1,9 @@
+Pharmacology An overview Video changes in protein conformation it changes the shape of the receptor When the ligand binds, protein once it has binds into the binding site.
+It does not fit the binding site exactly.
+Instead, as it binds at the site, various attractions between the ligand the functional groups on the binding site pull toward each other, distorting the shape of the rest of the protein.
+Effect of a ligand-receptor interaction: Activation of a membrane bound enzyme.
+Release of secondary messengers within the cells membrane which migrate to other parts of the membrane and either activate or inhibit further enzymes Open (or close) an ion channel through the membrane, allowing hydrophilic ions to pass through the hydrophobic cell membrane.
+The binding of a drug molecule to the active site of a receptor is classified into 2 types: Irreversible binding and reversible binding.
+Irreversible binding Involves strong covalent bonds Drug molecule cannot detach from the receptor active site Reversible binding Involves ionic interaction, hydrogen bonds, ion dipole interactions, van der waals interactions and permanent dipole interacts.
+Drug molecule can be unbound from the active site because drug binding and unbinding is in an equilibrium process.
+Question 1: If I have 2 similar agonists A and B and the dose response curve of drug A is provided in figure 2.12, how would the graph of B look like if B is a more potent drug? Assuming that both give the same maximum biological response Question 3: If I have 2 similar antagonists A and B, and B is a stronger antagonist than A, how would the dose response curve look like? Indicate in your graph above.
