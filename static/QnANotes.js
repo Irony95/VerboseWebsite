@@ -82,7 +82,6 @@ function askQuestion() {
     document.getElementById("question").disabled = true;
 
     answers = []
-    answerIndex = 0
     var questionAsked = document.getElementById("question").value
     if (questionAsked.length == 0) { return; }
     fetch("/ask", {
@@ -100,6 +99,8 @@ function askQuestion() {
         console.log(json)
         answers = json
         answerIndex = 0
+        document.getElementById("goUpButton").style.display = "none"
+        document.getElementById("goDownButton").style.display = "block"
         updateAnswer()
         document.getElementById("buttonAsk").disabled = false;
         document.getElementById("buttonText").innerHTML = "Ask";
