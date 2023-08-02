@@ -1,7 +1,6 @@
-flashcards = []
-
 var flippedBack = false
 var flashcardIndex = 0
+var flashcards = [];
 
 $("#popupCard").click(function() {
     if (flippedBack) {
@@ -37,39 +36,75 @@ fetch("/getNotes")
     tabsChanged(json[0])
 })
 
+
 function tabsChanged(name) {
-    fetch(`/getFlashcards?cards=${name}`)
-    .then(res => res.json())
-    .then(json => {
-        cardsList = document.getElementById("cardsList")
-        cardsList.innerHTML = ""
-        flashcards = json
-        for (let i = 0;i < flashcards.length;i++) {
-            var column = document.createElement("div")
-            column.classList.add("col")
-            column.classList.add("pb-3")
+    if (name.trim().length > 0) {
+        fetch(`/getFlashcards?cards=${name}`)
+        .then(res => res.json())
+        .then(json => {
+            cardsList = document.getElementById("cardsList")
+            cardsList.innerHTML = ""
+            flashcards = json
+            for (let i = 0;i < flashcards.length;i++) {
+                var column = document.createElement("div")
+                column.classList.add("col")
+                column.classList.add("pb-3")
 
-            var card = document.createElement("div")
-            card.classList.add("card")
+                var card = document.createElement("div")
+                card.classList.add("card")
 
-            $(card).click(function() {
-                flashcardIndex = i
-                updatePopupCard()
-                $("#flashcardModal").modal('show');
-            })
-            
-            var body = document.createElement("div")
-            body.classList.add("card-body")
-            body.classList.add("rounded-3")
-            body.innerHTML = flashcards[i]["title"]
+                $(card).click(function() {
+                    flashcardIndex = i
+                    updatePopupCard()
+                    $("#flashcardModal").modal('show');
+                })
+                
+                var body = document.createElement("div")
+                body.classList.add("card-body")
+                body.classList.add("rounded-3")
+                body.innerHTML = flashcards[i]["keyword"]
 
-            card.appendChild(body)
-            column.appendChild(card)
+                card.appendChild(body)
+                column.appendChild(card)
 
-            cardsList.appendChild(column)
-        }
-    })
+                cardsList.appendChild(column)
+            }
+        })
+    } else {
+        fetch("/getFlashcards")
+        .then(res => res.json())
+        .then(json => {
+            cardsList = document.getElementById("cardsList")
+            cardsList.innerHTML = ""
+            flashcards = json
+            for (let i = 0;i < flashcards.length;i++) {
+                var column = document.createElement("div")
+                column.classList.add("col")
+                column.classList.add("pb-3")
+
+                var card = document.createElement("div")
+                card.classList.add("card")
+
+                $(card).click(function() {
+                    flashcardIndex = i
+                    updatePopupCard()
+                    $("#flashcardModal").modal('show');
+                })
+                
+                var body = document.createElement("div")
+                body.classList.add("card-body")
+                body.classList.add("rounded-3")
+                body.innerHTML = flashcards[i]["keyword"]
+
+                card.appendChild(body)
+                column.appendChild(card)
+
+                cardsList.appendChild(column)
+            }
+        })
+    }
 }
+
 function dismissPopup() {
     console.log("asdfasdf")
     $("#flashcardModal").modal('hide');
@@ -88,12 +123,53 @@ function goRight() {
 }
 
 function updatePopupCard() {
-    console.log(flashcardIndex)
-    document.getElementById("popupFront").innerHTML = flashcards[flashcardIndex]["title"]
-    document.getElementById("popupBack").innerHTML = flashcards[flashcardIndex]["answer"]
+    // console.log(flashcardIndex)
+    document.getElementById("popupFront").innerHTML = flashcards[flashcardIndex]["keyword"]
+    document.getElementById("popupBack").innerHTML = flashcards[flashcardIndex]["definition"]
 
     var popup = document.getElementById("popupCard")
     popup.style.animation = "none"
     popup.offsetHeight
     popup.style.animation = "fadeInAnimation ease 1s, MoveUpDown ease 1s"
 }
+
+function updateFlashcardData() {
+    var newKeyword = document.getElementById("newKeyword").value;
+    var newDefinition = document.getElementById("newDefinition").value;
+    flashcards[flashcardIndex]["keyword"] = newKeyword;
+    flashcards[flashcardIndex]["definition"] = newDefinition;
+    var formData = new FormData();
+    formData.append('flashcardIndex', flashcardIndex);
+    formData.append('newKeyword', newKeyword);
+    formData.append('newDefinition', newDefinition);
+
+    fetch('/updateFlashcard', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            flashcards[flashcardIndex]["keyword"] = newKeyword;
+            flashcards[flashcardIndex]["definition"] = newDefinition;
+            tabsChanged(''); 
+        }
+    });
+}
+
+document.getElementById("newKeyword").addEventListener("input", updateFlashcardData);
+document.getElementById("newDefinition").addEventListener("input", updateFlashcardData);
+
+function showUpdateForm() {
+    var updateForm = document.getElementById("updateForm");
+    if (updateForm.style.display === "none") {
+        updateForm.style.display = "block";
+    } else {
+        updateForm.style.display = "none";
+    }
+    updatePopupCard();
+    updateFlashcardData();
+}
+
+
+
