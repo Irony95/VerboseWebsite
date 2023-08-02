@@ -40,6 +40,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="flashcardModal" style="overflow: hidden;">
+  
 
   <div class="d-flex justify-content-between w-100 p-3 flashcardButtons">
     <button style="font-size: 4em; background-color: transparent; border: none;" onclick="goLeft()">&lt;</button>
@@ -47,17 +48,34 @@
     <button style="font-size: 4em; background-color: transparent; border: none;" onclick="goRight()">&gt;</button>
   </div>
 
+  <!-- Add this section to the flashcardModal div -->
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div id="popupCard" class="modal-content flip-card" style="width: 100vw; height: 70vh;">
 
-      <div id="popupInner" style="height: 100%;">
-        <div id="popupFront" class="modal-body">
-          this is a test
+        <div id="popupInner" style="height: 100%;">
+            <div id="popupFront" class="modal-body">
+                this is a test
+            </div>
+
+            <div id="popupBack" class="modal-body" style="transform: rotateY(180deg);">
+                this is a testsdfsdf
+            </div>
         </div>
 
-        <div id="popupBack" class="modal-body" style="transform: rotateY(180deg);">
-          this is a testsdfsdf
-        </div>
+        <div class="d-flex justify-content-center pt-3">
+          <button id="updateButton" class="btn btn-primary" onclick="showUpdateForm()">Update Flashcard</button>
+      </div>
+      
+      <!-- Add the update form (initially hidden) -->
+      <div id="updateForm" style="display: none;">
+          <div class="form-group">
+              <label for="newKeyword">New Keyword:</label>
+              <input type="text" class="form-control" id="newKeyword">
+          </div>
+          <div class="form-group">
+              <label for="newDefinition">New Definition:</label>
+              <textarea class="form-control" id="newDefinition" rows="3"></textarea>
+          </div>
       </div>
 
     </div>
