@@ -21,8 +21,8 @@ from pdfminer.layout import LTTextContainer, LTChar, LTText, LTAnno
 Output_Dir = ""
 Note_Name = ""
 #Page range for the PDF(s) (inclusive)
-minimum_page = 0
-maximum_page = 999
+minimum_page = 49
+maximum_page = 73
 ############################################################
 
 
@@ -76,14 +76,16 @@ def temp_Modify_note_text(note_text, note_name):
             newer_note_text.append(temp_hold + line)
             temp_hold = ""
 
-    with open(os.getcwd() + "\\" + "\\pickle_notes\\" + note_name + "_pickle", "wb") as fp:  # Pickling
-        pickle.dump(newer_note_text, fp)
+    newerer_note_text = []
 
     string = ""
     for line in newer_note_text:
         if (re.fullmatch(r'[\.\d]+', line) != None):
             continue
         string = string + line + "\n"
+        newerer_note_text.append(line)
+    with open(os.getcwd() + "\\" + "\\pickle_notes\\" + note_name + "_pickle", "wb") as fp:  # Pickling
+        pickle.dump(newerer_note_text, fp)
     return string
 
 def split_and_rejoin_sentences(test_iter, iter_count, line):
