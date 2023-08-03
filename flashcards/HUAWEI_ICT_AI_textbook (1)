@@ -1,0 +1,10 @@
+[{"keyword": "Convolutional neural network", "definition": "the artificial neurons of the convolutional neural networks can respond to a part of the units within the range of coverage, and have good performance in image processing"},
+ {"keyword": "Recurrent neural network", "definition": "A Recurrent Neural Network (RNN) is a type of neural network that captures dynamic information in serialized data by periodically connecting nodes in the hidden layer, so as to classify serialized data"},
+  {"keyword": "Strong AI", "definition": "possibility to create the intelligent machines that can accomplish reasoning problem-solving tasks. The machines of this kind are believed to have consciousness and self-awareness and be able to think independently and come up with the best solutions to the problems"},
+   {"keyword": "Weak AI", "definition": " it is not able to make machines that can truly accomplish reasoning and problem-solving. These machines may look smart, but they do not really have intelligence or self-awareness."},
+    {"keyword": "supervised learning", "definition": "allowing the computer to compare standard answers when it is trained to answer the multiple-choice questions"},
+     {"keyword": "unsupervised learning", "definition": "letting the computer do multiple-choice questions without telling it what the correct answer is"},
+      {"keyword": " Semi-supervised Learning", "definition": "combination of supervised learning and unsupervised learning. This algorithm attempts to allow the learner to automatically utilize a large amount of unlabeled data to assist the learning of a small amount of labeled data"},
+       {"keyword": "Momentum optimizer", "definition": "The Momentum optimizer is a fundamental improvement of the gradient descent algorithm, which supplements momentum term to the weight update equation"},
+        {"keyword": "Adagrad Optimizer", "definition": "an ameliorated version of the Adagrad optimizer by introducing an attenuation coefficient, to the algorithm, which attenuates the historical records gradient by a certain percentage for every iteration"}
+        ]

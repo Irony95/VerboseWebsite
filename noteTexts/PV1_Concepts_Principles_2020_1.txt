@@ -1,0 +1,102 @@
+1.1 Purposes of Valuation 1.2 Definition of Market Value 1.3 Principles of Valuation 1.4 The Role of the Valuer 1.5 Practices and Challenges in Valuation Objectives To enable students to: 1.
+Value a property on an appropriate basis for a given purpose of valuation.
+Explain market value and non-market value bases of valuation.
+Understand the principles of valuation.
+Explain the role of the valuer.
+Recognise valuation practices and challenges Valuation may be defined as the art or science of estimating the value of an interest in a property for a specific purpose at a particular point of time.
+Different valuers could give different values to a particular interest at a particular time.
+This is because they are making estimates, or opinions of value, which are allowed to differ within certain limits.
+When a client asks, What is the value of a given property? the valuer needs to find out, Who wants to know? or What is the valuation for? This is because a property can have a whole range of different values at one particular moment in time, depending on the purpose of the valuation.
+Once the purpose of valuation is known, the valuer would determine the appropriate basis of valuation.
+The purpose The basis of valuation for each purpose must comply with SISVs Valuation Standards and Guidelines, unless the client, statutory requirements or legal documents specify otherwise.
+Different purpose may require different value Some common examples: Purposes of valuation Basis of valuation Sale Purchase Financing / Loan Security Market Value If the valuer provides any other value, he shall explain the basis and reasons for such a value.
+Auditing / Accounting Merger / Reorganisation Court Proceeding Fire Insurance / Indemnification Reinstatement Cost or Insurance Value (i.e.
+such other basis as stated Land Titles (Strata) Insurance Regulations).
+Land Acquisition According to the Land Acquisition Act.
+Property Tax According to the Property Tax Act.
+Development Charge According to the Planning Act.
+So a property can have a whole range of different values (market value, reinstatement cost, annual value, etc) at any one time, but there is only one market value.
+Concepts of Price, Cost and Value Price is a term used to describe the amount asked (hence asking price), the amount offered (hence offered price), or the amount transacted (hence transacted price or simply price), for a good or service.
+It is a historical fact.
+It indicates the relative value placed on the goods or services E.g.
+to find Market value is to estimate the price that a property can sell for in a market.
+It may or may not sell for that price eventually.
+So value is not a fact.
+Similar properties were sold for so much, so the subject property should be worth so much.
+No benefit, no value, even though the property is physically there.
+The use that results in the highest value or the most productive use Cost is the price paid for the goods and services or the amount required to create or produce them.
+It is a historical fact.
+The price paid for a good or service becomes its cost to the buyer.
+Value is an economic concept.
+It is not a fact.
+It is an estimate of the worth of a good or service at a given time according to the particular definition of value.
+The worth reflects a markets or a persons view of the benefits that can be derived from the good or service.
+A valuer arrives at a value, based on the clients terms of reference, by making adjustments to the historical price and cost available in the market.
+Value is not intrinsic but results from estimates made subjectively by able and willing buyer of the benefit and satisfaction he will derive from ownership of the interest.
+What is valued is an interest in property, which gives legal rights of use and enjoyment to a property, and not the physical property per se. (i.e.
+extrinsic value) Value in use refers to the subjective value to the user and is measured in terms of utility which does not necessary have a monetary equivalent.
+Value in exchange, on the other hand, is that agreed between two parties.
+In an open market context, this is objective value and in todays economy, is nearly always represented by a monetary value known as price.
+Highest and Best Use This is the most probable use of a property which is legally physically permissible, financially feasible, and which results in the highest value of the property being valued.
+appropriately possible, justified, It is important to forecast the most productive use of land otherwise the owner may be faced with a situation of under- improvement or over-improvement when the project is completed.
+Over-improvement occurs when the capital invested leads to decreasing rate of return with high building cost outlay.
+On the other hand, under-improvement occurs maximum power of the site.
+Market Value This is the most common basis of valuation.
+To estimate Market Value, the valuer must first estimate the highest and best use for the property in question.
+Market Value is the estimated amount for which an asset or liability should exchange on the valuation date between a willing buyer and a willing seller in an arms length transaction after proper marketing where the parties had each acted knowledgeably, prudently and without compulsion.
+Willing parties? Proper marketing? Arms length? With knowledge, prudence and no length? Market Rental is the estimated amount for which a property would be leased on the valuation date between a willing lessor and a willing lessee on appropriate lease terms in an arms length transaction after proper marketing where the parties had each acted knowledgeably, prudently and without compulsion.
+Yes to all market transaction No to any Non-market transaction Transactions which do not meet the above criteria therefore do not reflect open market value.
+The following categories of sales are examples of those transactions which may not be concluded at market value: Reflects market value (or rental) Forced sale Purchase by an adjoining owner Sale between members of a family Inter-company transaction Sale to a sitting tenant Examples of non-market value basis: Examples Non-market value basis Existing Use Value Insurance Value Forced Sale Value What it means The market value of a property based on continuation of its existing use, regardless of whether the existing use represents the highest and best use of the property The value of property on the basis as defined in the insurance contract or policy The amount that may reasonably be received from the sale of a property under conditions that do not meet all the criteria of a normal market transaction involving an Forced sale is a sale under extraordinary circumstances, inadequate marketing period, usually inadequate publicity, inappropriate mode of sale, and sometimes involving an unwilling seller, or sale under the price compulsion or duress.
+For associated with a forced or distressed sale does not represent market value.
+these reasons, It is generally not easy to predict a Forced Sale Value because of the subjective and conjectural assumptions that must be made in formulating such an opinion.
+Therefore, a valuer shall not provide a Forced Sale Value unless specifically requested by the client, in which case he shall provide the assumptions on which such value is based.
+The following are some of the important principles that set the foundation for property valuation: Principle of Substitution The value of any replaceable property tends to equal its cost of replacement or the cost of acquiring an equally desirable substitute.
+Principle of Contribution The value of a component part of a property depends on either how much it contributes to the value of the whole or how much its absence detracts from the value of the whole.
+Principle of Surplus Productivity Income that is available to land is the residual return, after payment to the other three factors/agents of production: labour, coordination and capital.
+Principle of Anticipation Property value is the present worth of future benefits, whether they are in the form of tangible benefits, such as income or capital gain or intangible benefits, as in the case of home ownership and use.
+Principle of Highest and Best Use The highest and best use of a property means its most profitable or beneficial use.
+A valuer is a member of the surveying profession who is primarily concerned with the estimation of the value of land and buildings for various purposes, for both open-market and statutory transactions.
+The valuer does NOT convey properties.
+He is expressly the Legal Profession prohibited (Amendment) Act 1979.
+Conveyancing is the task of the lawyer.
+from doing so by The valuer is not restricted only to the estimation of value.
+With his special knowledge, he is often involved in property management, property development, estate agency works and town planning.
+The real estate valuation profession is well established in Singapore.
+Before one qualifies as a professional valuer or licensed appraiser, one has to complete a basic real estate undergraduate course or obtain an equivalent professional qualification.
+Thereafter, exposure to the property market under the guidance of a qualified valuer is essential.
+In addition, he must be elected as a member of the Singapore Institute of Inland Revenue Surveyors and Valuers Authority of Singapore (IRAS) is the government body that assesses and issues licences to the individual to practise in Singapore under the Appraisers Act.
+(SISV). The Valuers in Singapore have to abide by the code of ethics, professional standards and guidelines laid down by the SISV.
+In addition, they are also guided by the standards issued by the Royal Institution of Chartered Surveyors (RICS) and/or those issued by the International Valuation Standards Committee (IVSC). For instance, RICS members are required to abide by the standards/guidelines stated in the Red Book unless they can satisfy the RICS that an alternative approach is acceptable and not indicative of negligence of their part.
+A professional valuer should endeavour to give an unbiased due consideration of the factors affecting the value of a property.
+Valuation of Green Buildings/Sustainable Developments The green building movement started officially in Singapore with the launch of Building and Construction Authority (BCA) Green Mark Scheme in 2005.
+The scheme is a rating system which provides a comprehensive framework for assessing the overall environmental performance of new and existing buildings, to promote sustainable design, construction and operation practices in buildings.
+The assessment criteria cover key areas of energy efficiency, water efficiency, environmental protection, indoor environmental quality and other green features and innovation.
+According to the BCAs Third Green Building Master Plan (2014), since the launch of Green Mark Scheme, the number of green buildings has grown remarkably, from 17 in 2005, to more than 2,100 in 2014.
+The Inter-Ministerial Committee on Sustainable Development (IMCSD) reports target for the built environment is to achieve at least 80% of the buildings in Singapore to be green by 2030.
+Among the real estate practitioners, concerns have been expressed on how the sustainability and green movement impact property developments and values.
+Studies have shown that green buildings can achieve cost-effectiveness, energy efficiency, improve heath and productivity of their occupants, and lower environmental impact.
+As it is, the concept of sustainability is relatively new to the valuation profession.
+that is only sustainable developments were recognised to have possible significant impacts on property values.
+in recent years It that are Valuers should therefore be mindful of the common green the features and/or design developments, and their cost implications.
+A green building is likely to command a higher value than one which is not green.
+In the longer term, when every building will be green- certified, the difference in value would then likely be attributed to the extent of green features or design that has been incorporated.
+introduced to Automated Valuation Models An automated valuation model (AVM) refers to a computer software programme that analyses data for valuation.
+AVMs make use of statistical logarithms (eg.
+multiple regression analysis) to process data efficiently to assist valuers in the determination of the market value of a property.
+The Computer-Assisted Mass Appraisal (CAMA) system used by the Inland Revenue Authority of Singapore (IRAS) to automate the assessment of similar properties such as HDB flats, private apartments and others for the purpose of computing annual value and property tax payable, is a good example of AVM.
+to an individual property without When applied the assistance of a valuer, the output of an AVM is not, by itself, an appraisal.
+This is because valuers are required to carry out proper investigations on all matters physically and legally about the property, as well as to interpret and rationalise market trends in order to determine its market value.
+Neither can the computer carry out these tasks nor can it take the place of humans.
+Online valuation tools that provide indicative valuations are now available on many property portals.
+The Singapore Institute of Surveyors and Valuers (SISV) has issued clear advice to valuers members against the endorsement of such AVMs as valuations.
+Desktop Valuation and Endorsement of Valuation Practices Indicative Desktop valuation generally refers to estimating the market value of a property without undertaking a physical inspection of the property.
+The request for desktop valuations and/or endorsement of indicative valuations especially by financial institutions in Singapore has been rampant.
+However, such practice, if allowed, will have grave impact on the professionalism, image and livelihood of the profession.
+To endorse on a value to an uninspected property is not a subscribed valuation practice.
+Valuers are advised to observe the SISVs Code of Ethics to uphold the high and credibility.
+Business Valuation Business valuation is concerned with estimating the worth of an entity or a business concern.
+Unlike a real property, a tangible assets as well as business comprises both intangible assets such as patents, copy rights and others.
+Hence, the most significant value base of a business is not the location at which the business is operated but the expected profitability and future cash flow expected of the business operations.
+The main challenge in business valuation is that, given the nature of a business, the valuation of its worth is subject to variations because of the composition of assets, purpose of valuation and methods of valuation used.
+References Singapore Institute of Surveyors and Valuers. (2015). Valuation Standards And Practice Guidelines. (2015 Edition). Candid Creation Publishing.
+Building and Construction Authority. (2014). Third Green Building Masterplan.

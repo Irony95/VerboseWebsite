@@ -1,0 +1,5 @@
+[{"keyword": "Microcontroller", "definition": "a small computer on a single integrated circuit (IC) consisting internally of a relatively simple CPU, clock, timers, I/O ports and memory (program memory in the form of flash, and a small amount of data memory in the form of RAM). Microcontrollers are designed for small or dedicated applications"},
+{"keyword": "SDIP", "definition": "Skinny Plastic Dual In-Line"},
+{"keyword": "SOIC", "definition": "Small Outline"},
+{"keyword": "PDIP", "definition": "Plastic Dual In-Line"},
+{"keyword": "IO interfacing", "definition": "Many I/O (input/output) devices, beside LED’s and switches, can be connected to a micro-controller."}]

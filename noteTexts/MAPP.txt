@@ -1,0 +1,902 @@
+Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Introduction to Microcontrollers .................................................................................................. 8 1.1 What is a microcontroller? ............................................................................................................... 8 1.2 Main parts of a microcontroller ....................................................................................................... 9 1.3 How is a microcontroller different from a microprocessor? ............................................................. 9 1.4 Common characteristics of a microcontroller ................................................................................ 11 1.5 Typical applications of a microcontroller ....................................................................................... 11 1.6 Embedded systems ......................................................................................................................... 12 1.7 A simple application: Pedestrian crossing traffic light control ....................................................... 12 1.8 Microcontroller Development Tools ............................................................................................... 14 1.9 Software Build Process ................................................................................................................... 15 1.10 1.11 Summary ................................................................................................................................... 15 Review questions ....................................................................................................................... 16 An Overview of the Microchip PIC 18F4550 Microcontroller ........................................................ 17 2.1 Why Microchips PIC18F4550? ....................................................................................................... 17 2.2 Key features of PIC18F4550............................................................................................................ 17 2.3 PIC18F4550 Variants ...................................................................................................................... 18 2.4 Block diagram on-chip peripherals ............................................................................................. 20 2.5 Pin diagram .................................................................................................................................... 21 2.6 A basic PIC-based circuit ................................................................................................................. 22 2.7 A simple application zebra crossing light control ..................................................................... 23 2.8 Review Questions ........................................................................................................................... 27 I/O Ports and Device Interfacing ................................................................................................. 28 3.1 IO Interfacing.................................................................................................................................. 28 3.2 Interfacing to LED bar .................................................................................................................... 29 3.3 Interfacing to 7 Segment Display ................................................................................................... 30 3.4 Interfacing to multi-digit 7-segment display .................................................................................. 31 3.5 Interfacing to Matrix Keypad ......................................................................................................... 35 3.6 Interfacing to LCD ........................................................................................................................... 37 3.7 Using a transistor as a switch ........................................................................................................ 38 3.8 Interfacing to DC motor / solenoid ................................................................................................. 39 3.9 PIC18F4550 I/O ports ..................................................................................................................... 41 3.10 Port A ......................................................................................................................................... 42 ET1010 / ET0884 Microcontroller Applications Page 4 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 3.11 3.12 3.13 Configuring a GPIO pin as an Input or Output pin ..................................................................... 44 Connecting an LED as output and a switch as input .................................................................. 45 Reading from Digital Input pins ................................................................................................. 46 3.14 Writing to Digital Output Pins ................................................................................................... 47 3.15 3.16 Other I/O ports B to E ................................................................................................................ 47 Review Questions ...................................................................................................................... 49 Analogue to Digital Converter ..................................................................................................... 51 4.1 Introduction to A/D Converter ........................................................................................................ 51 4.2 Examples of application ................................................................................................................. 52 4.2.1 Measuring temperature using a digital thermometer .......................................................... 52 4.2.2 Measuring brightness using a light dependent resistor ....................................................... 52 4.3 A/D conversion in PIC18F4550 sample calculations .................................................................... 54 4.4 The structure of PIC18F4550s A/D converter module ................................................................... 57 4.5 Registers associated with A/D operation ....................................................................................... 58 ADCON0 ................................................................................................................................ 58 ADCON1 ................................................................................................................................ 60 ADCON2 ................................................................................................................................ 62 4.5.1 4.5.2 4.5.3 4.6 The complete A/D operation sequence .......................................................................................... 65 4.7 ADC Programming example ........................................................................................................... 66 4.8 Review Questions ........................................................................................................................... 67 A brief revision on C programming language ............................................................................... 68 5.1 C language fundamentals define include directives, comments, constants, variables, operators .............................................................................................................................. 68 5.2 Pre-Processor Directives ................................................................................................................. 68 define Directive .................................................................................................................. 68 include Directive ................................................................................................................. 68 5.2.1 5.2.2 5.3 5.4 5.5 5.5.1 5.5.2 Code Comments ..................................................................................................................... 69 Constants ................................................................................................................................. 69 Variables .................................................................................................................................. 70 Local variables ...................................................................................................................... 71 Global variables .................................................................................................................... 71 5.6 Operators ................................................................................................................................. 72 5.7 Arithmetic operators ...................................................................................................................... 72 5.8 Relational operators ....................................................................................................................... 72 Compare two values and return 1 (for true) or 0 (for false) based on the comparison ....................... 72 5.9 Logical operators ............................................................................................................................ 73 5.10 Bitwise operators ....................................................................................................................... 73 5.11 C language fundamentals functions program control statements ............................. 74 ET1010 / ET0884 Microcontroller Applications Page 5 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 5.11.1 Functions .......................................................................................................................... 74 5.12 Program control statements .................................................................................................. 75 Conditional if-else ......................................................................................................... 75 Conditional Switch Case ............................................................................................... 76 Iterative for Loops ........................................................................................................ 76 Conditional while Loops ............................................................................................... 78 5.12.1 5.12.2 5.12.3 5.12.4 5.13 Review Questions ...................................................................................................................... 79 PIC18F4550 Programmable Timers and Counters ........................................................................ 80 6.1 Why are Timers and Counters needed in micro-controller applications? ....................................... 80 6.2 Programmable timers / counters in PIC18F4550 ........................................................................... 82 6.3 Using Timer0 to schedule an event ................................................................................................ 83 Registers associated with Timer0 operation ........................................................................ 83 Timer0 calculations ............................................................................................................... 86 Programming Timer0 to schedule an event ......................................................................... 89 Scheduling a periodic event using Timer0 ............................................................................ 90 6.3.1 6.3.2 6.3.3 6.3.4 6.4 Using Timer0 to measure the elapsed time Optional .................................................................. 91 6.5 Using Timer2 for PWM control of DC motor speed ........................................................................ 93 Timer 2 Introduction .......................................................................................................... 93 PWM (Pulse Width Modulation) ........................................................................................... 96 PIC18F4550s PWM capability .............................................................................................. 97 6.5.1 6.5.2 6.5.3 6.6 Review Questions ......................................................................................................................... 100 Interrupts ................................................................................................................................. 101 7.1 Introduction to interrupts ............................................................................................................. 101 7.2 PIC18F4550s Timer0 interrupt ..................................................................................................... 104 7.3 PIC18F4550s INT0 external hardware interrupt .......................................................................... 108 7.4 PIC18F4550s other interrupt features ......................................................................................... 110 7.4.1 Multiple interrupt sources .................................................................................................. 110 7.4.2 Other interrupt sources ...................................................................................................... 110 Interrupt priority ................................................................................................................. 111 7.4.3 7.5 Review Questions ......................................................................................................................... 112 Serial Communications ............................................................................................................. 114 8.1 Basics of serial communication .................................................................................................... 114 8.1.1 Serial vs.
+parallel ................................................................................................................. 114 8.1.2 Modulation / demodulation ............................................................................................... 114 Synchronous vs.
+asynch ...................................................................................................... 115 8.1.3 ronous ................................................................................................................................. 115 8.1.4 Simplex, half-duplex and full-duplex .................................................................................. 116 8.1.5 Serial communication protocol .......................................................................................... 117 8.1.6 RS232 interfacing standards ............................................................................................... 118 8.1.7 8.2 PIC18F4550 connection to RS232 ................................................................................................. 119 8.3 The registers associated with serial port operations .................................................................... 121 SPBRG setting up the baud rate ....................................................................................... 121 8.3.1 ET1010 / ET0884 Microcontroller Applications Page 6 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic A microcontroller (MCU or C) is a small computer on a single integrated circuit (IC) consisting internally of a relatively simple CPU, clock, timers, I/O ports and memory (program memory in the form of flash, and a small amount of data memory in the form of RAM). Microcontrollers are designed for small or dedicated applications.
+Thus, in contrast to the micro-processor used in personal computers (PC) and other high-performance or general purpose applications, simplicity is emphasized in microcontrollers.
+Some microcontrollers may use four-bit words and operate at clock rate as low as 4 kHz, as this is adequate for many typical applications, enabling low power current consumption in the micro Ampere range.
+They will generally have the ability to retain functionality while waiting for an event such as a button press or other interrupt power consumption while sleeping (CPU clock and most peripherals off) may just be nanowatts, making many of them well suited for long lasting battery applications.
+Other microcontrollers may serve performance-critical roles, where they may need to act more like a digital signal processor (DSP), with higher clock speeds and power consumption.
+Microcontrollers are used in automatically controlled products and devices, such as automobile engine control systems, implantable medical devices, remote controls, office machines, appliances, power tools and toys.
+By reducing the size and cost compared to a design that uses a separate micro- processor, memory, and input/output devices, microcontrollers make it economical to digitally control even more devices and processes.
+Mixed signal microcontrollers are common, integrating analogue components needed to control non-digital electronic systems.
+ET1010 / ET0884 Microcontroller Applications Page 8 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Basic building blocks of a microcontroller is shown in Figure 1.1.
+CPU Clock Timers Memory I / O ports Figure 1.1 Main parts of a microcontroller The memory holds the instructions or data.
+The memory is typically RAM (random access memory which is volatile i.e.
+data is lost when power is turned off) and / or FLASH (a type of EEPROM non-volatile, and can be block erased) The I/O ports allow interactions with the outside world.
+The CPU has logic that fetches instruction and data, executes the instruction and stores the result back to memory.
+A microprocessor often requires other components to form a functional system for instance an external clock source using a crystal oscillator, peripheral devices such as timers, and memory as shown in Figure 1.2.
+On the other hand, for a microcontroller all these peripherals are built in albeit in smaller in size and lower in cost.
+Microprocessors are typically used in personal computers (PC) which are general purpose systems.
+Various programs running on them such as operating system, web browser, email software, word processor, spreadsheet, games makes them flexible to be used for a variety of purposes.
+On the other hand, microcontrollers are often used in dedicated systems designed for one task only such as a microwave oven or a coffee machine.
+The Figure 1.3 shows a desktop PC (Personal Computer) with the monitor as output and the keyboard and mouse as input units.
+A motherboard inside the PC hosts a ET1010 / ET0884 Microcontroller Applications Page 9 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic processing unit, some peripheral devices (e.g.
+memory, timer) and connections for the various inputs and outputs.
+A processor, or Central processing Unit (CPU), is a logic circuitry that reacts and processes instructions to perform computation.
+Most CPUs used in computers today are multicore processors, which means that the integrated circuitry comprises multiple processors to improve performance and support simultaneous processing of several computer tasks.
+Consequently, a multicore CPU is more powerful as compared to a single core CPU.
+On the other hand, a microprocessor is essentially a single-chip implementation of a CPU.
+A microprocessor contains all of a CPU's functions and can perform arithmetic and logic operations with registers.
+The differences between CPU and microprocessors rather vague due to their similarities.
+In computer literature terms CPU and microprocessor often used interchangeably.
+A microcontroller A microprocessor CPU Clock Timers Memory CPU I / O ports Clock Timers etc Memory I / O ports Figure 1.2 Microcontroller vs.
+microprocessor ET1010 / ET0884 Microcontroller Applications Page 10 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Mother board inside the PC Figure 1.3 Microprocessor as part of a personal computer Microcontrollers share the following characteristics: Microcontrollers are embedded inside some other device (often a consumer product) so that they can control the features or actions of the product.
+Therefore, another popular name for a microcontroller is embedded controller.
+Microcontrollers are dedicated to one task and run one specific program.
+The program is stored in non-volatile memory (e.g.
+ROM / flash) and generally does not change.
+Microcontrollers are often low-power devices.
+A desktop PC might consume 50 watts of electricity but a battery-operated microcontroller might consume 50 milliwatts.
+A microcontroller works with fixed input and output devices.
+It reads the status of the input devices and sends control signals to the output devices.
+For example, a microwave oven controller takes input from a keypad, displays output on an LCD display and controls a relay that turns the microwave generator on and off.
+A microcontroller is often small and low cost.
+The components are chosen to minimize size and to be as inexpensive as possible.
+Microcontrollers are found in almost all smart electronic devices.
+From microwave ovens to automotive braking systems, they are around us doing jobs that make our lives more convenient and safer.
+Typically, a microcontroller receives inputs from sensors (e.g.
+a temperature sensor), makes some intelligent decisions (e.g.
+is the temperature too high?), and then drives some outputs / mechanism to cause something to happen (e.g.
+turn on a fan).
+ET1010 / ET0884 Microcontroller Applications Page 11 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Lets consider design of an intruder alert device to protect a home against intruders while the owner is away.
+Before leaving home, owner can activate the device by pressing a button.
+He must then leave within a minute.
+Upon returning home, he opens the door and triggers a motion sensor, the gadget will prompt him to key in the correct password within 30 seconds, failing which an alarm will be activated.
+Based on the description of the device above, the following input / output devices are likely to be used: some buttons, some LEDs, a motion sensor, an LCD, a keypad, a buzzer.
+This can change based on the design and fabrication constrains.
+An embedded system is a computer system designed to perform one or a few dedicated functions, often with real-time computing constraints i.e.
+the system must respond in time to external stimuli.
+The system often includes hardware and mechanical parts.
+By contrast, a general-purpose computer, such as a PC, is designed to be flexible and to meet a wide range of end-user needs.
+Embedded systems are controlled by a microcontroller or in some specific applications using a digital signal processor (DSP). Since an embedded system is dedicated to handle a particular task, design engineers can optimize it reducing the size and cost of the product and increasing the reliability and performance.
+Physically, embedded systems range from portable devices such as MP3 players, to large stationary installations like traffic lights.
+A pedestrian crossing is shown in Figure 1.4.
+A micro-controlled based embedded system is required to control the traffic and pedestrian lights.
+Figure 1.4 Pedestrian crossing traffic light control ET1010 / ET0884 Microcontroller Applications Page 12 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic From the figure, we can conclude that the two push buttons are the inputs and buzzers, count down display and traffic lights are the output devices for this system.
+Considering these basic hardware requirements, a block diagram of the traffic light control can be drawn as shown in Figure 1.5.
+Figure 1.5 Block diagram for traffic light control The next step of the design is to study the flow of operations for the traffic light control system.
+Figure 1.6 shows an example flow chart for this scenario.
+Figure 1.6 Flow chart for traffic light control ET1010 / ET0884 Microcontroller Applications Page 13 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic A microcontroller-based electronic system requires both hardware and software developments concurrently.
+In terms of hardware development, it is necessary to first understand / select /procure suitable input/output devices (i.e.
+sensors / actuators) as well as a microcontroller.
+After that necessary electronic circuit is designed using a Computer Aided Design (CAD) tool.
+CAD tools allow capturing the schematic, performing some simulations, and then laying out a Printed Circuit Board (PCB).
+Developing a prototype on a bread-board, or on a strip-board, or on a PCB is done for testing the design in practice.
+If several sub-circuits are used, some interfacing may be required.
+However, a microcontroller cannot work unless it is programmed.
+To program the microcontroller, an Integrated Development Environment (IDE) is used.
+A program is then written, using either a high-level language such as C-language or an assembly language.
+A program written in a high-level language is easier to understand, for instance, it is easier figure out what the following program lines mean: if (temp 30) on_motor On the other hand, an assembly language is a low level programming language designed for a specific processor.
+A program written directly at microcontrollers assembly language will look like as in the following example: BSF MOVLW 06h MOVWF 85h BCF 03h, 5 03h, 5 go to Bank 1 put 00110 into W move 00110 into TRISA come back to Bank 0 The microcontroller cannot understand the high-level language or the assemble language it can only comprehend machine code that is a string of 1s and 0s (e.g.
+1010101111101010000100101110). On a computer, the string of 1s and 0s are stored as hexadecimal numbers (i.e.
+in a hex file).
+So, the program written in high level language must be first compiled and converted into the machine code using a compiler.
+Likewise, the program written in assembly language must be first assembled into the machine code using an assembler.
+The machine code is then downloaded (usually via USB cable) from the PC into the microcontroller memory.
+As mentioned, a compiler converts the program written in high level language into machine code directly.
+Due to this convenience, it is more popular for software development.
+However, assembly language is still used for fine tuning or optimizing the code.
+Even with the circuits and program ready, usually some trouble-shooting will be required to get a microcontroller project working properly.
+ET1010 / ET0884 Microcontroller Applications Page 14 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The Software Build Process generally refers to the sequence of steps required to finally generate a binary executable that can be flashed to the ROM of a microcontroller.
+The flow chart below illustrates the build process, Parses the C code to extract only compilable code from Pre-Processor directives, comments, etc.
+Compiles the code to generate the corresponding Assembly Code based on the instruction set for the target microcontroller Takes the Assembler Code files generated by the Compiler and generates the intermediate Object code files need for the Linker.
+The Linker takes all the Object files and allocates the required RAM and ROM space and then generates binary executable for debugging and also sometimes a binary format file for flashing the Microcontroller ROM In this chapter, an introduction to microcontrollers is given.
+In the following chapters, essential features of microcontrollers and how to use them in practice will be explained.
+These concepts will be introduced using one of the well-known microcontroller from industry, PIC18F4550 from Microchip, as an example.
+Some useful features, such as I/O ports, input/output device interfacing, analogue to digital converters, timers, interrupts will be explained with examples.
+ET1010 / ET0884 Microcontroller Applications Page 15 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+Compare the various microcontroller characteristics above with the microprocessor inside a desktop PC.
+How are they different? Microcontroller Microprocessor Dedicated or general purpose Power consumption Input and output devices Size Cost 2.
+Look around and name several devices that you encounter in your daily life where a microcontroller may be found: Applications of microcontroller 1.
+Consider one of the devices you have listed above.
+a) Draw its hardware block diagram taking into account all the inputs and outputs to the microcontroller.
+b) Draw a flow charts of its operation.
+What is the purpose of the C Pre-Processor ? List some C Code examples where the C Processor is used.
+ET1010 / ET0884 Microcontroller Applications Page 16 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Among the more popular ones are AVR, ARM, etc.
+It is not easy to decide which micro-controller is the best for a course or for use in a project.
+In this course, we have decided to use Microchips PIC18F4550 for a few reasons It can be programmed by a USB cable using a pre-flashed bootloader using a desktop application to load and transfer the binary executable The software tool IDE (Integrated Development Environment), the C- compiler, as well as the utility program to download a hex file into the micro-controller are available as Freeware software.
+The key features of PIC18F4550 include the following: Parameter Program Memory Type Program Memory (KB) CPU Speed (MIPS) RAM Bytes Data EEPROM (bytes) Digital Communication Peripherals Capture/Compare/PWM Peripherals Timers ADC Comparators USB (ch, speed, compliance) Temperature Range (C) Operating Voltage Range (V) Pin Count Value Flash 2,048 1-A/E/USART, 1-MSSP(SPI/I2C) 1 CCP, 1 ECCP 1 x 8-bit, 3 x 16-bit 13 ch, 10-bit 1, Full Speed, USB 2.0 (12Mbits/s) -40 to 85 2 to 5.5 The USB connectivity, large amounts of RAM memory for buffering and Flash program memory make it ideal for embedded control and monitoring applications that require periodic connection with a PC via USB for data upload / download and/or firmware updates.
+ET1010 / ET0884 Microcontroller Applications Page 17 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The PIC18F4550 comes in different packages as show below, 28-Lead Plastic Small Outline (SO) Wide, 7.50 mm Body SOIC 28-Lead Skinny Plastic Dual In-Line (SP) 300 mil Body SPDIP 40-Lead Plastic Dual In-Line (P) 600 mil Body PDIP 44-Lead Plastic Thin Quad Flatpack (PT) 10x10x1 mm Body, 2.00 mm Footprint TQFP 44-Lead Plastic Quad Flat, No Lead Package (ML) 8x8 mm Body QFN The SPDIP PDIP packages are more suitable for prototyping using bread- board, strip-board thru-hole PCB.
+However, SOIC, TQFP QFN packages have a smaller footprint and helps to reduce the PCB size.
+ET1010 / ET0884 Microcontroller Applications Page 18 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The table below shows different variants of the PIC18F series of microcontrollers Features Program Memory (Bytes) Program Memory (Instructions) Interrupt Sources I/O Ports Capture/Compare/PWM Modules Enhanced Capture/Compare/ PWM Modules Parallel Communications (SPP) 10-Bit Analog-to-Digital Module Packages PIC18F2455 PIC18F2550 PIC18F4455 PIC18F4550 Ports A, B, C, (E) Ports A, B, C, (E) Ports A, B, C, D, E Ports A, B, C, D, E No No 10 input channels 28-pin PDIP 28-pin SOIC 10 input channels 28-pin PDIP 28-pin SOIC Yes Yes 13 input channels 40-pin PDIP 44-pin TQFP 44-pin QFN 13 input channels 40-pin PDIP 44-pin TQFP 44-pin QFN You will notice that the 2550 / 4550 have more program memory compared to the 2455 / 4455.
+The bigger PICs (4455 / 4550) of course have more input/output pins.
+Microchip has hundreds of different PICs.
+Check out www.microchip.com.
+The above 4 are featured in the same datasheet and have many things in common.
+Choosing a suitable PIC to use for a project / product will only come with experience.
+The choice often depends on features currently required, future enhancements planned for the product/gadget, prototyping / manufacturing constraints, price and availability etc.
+Frequently, engineers / designers look for something good enough, not necessarily optimal.
+ET1010 / ET0884 Microcontroller Applications Page 19 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic As can be seen from the block diagram, PIC18F4550 has many on-chip peripherals.
+In this course we will study those that are most useful for projects e.g.
+I/O, ADC, Timer, Interrupt, USART.
+Figure 2.1 PIC18F4550 block diagram ET1010 / ET0884 Microcontroller Applications Page 20 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Figure 2.2 PIC18F4550 pin diagram Most microcontroller pins can support several alternate functions.
+For instance, the pin 33 is RB0 (Port B Pin 0), AN12 (analogue input 12), INT0 (external interrupt 0), FLT0, SDI and SDA, i.e.
+a total of 6 functions multiplexed on one pin.
+ET1010 / ET0884 Microcontroller Applications Page 21 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Figure 2.3 A basic PIC18F4550-based circuit As you can see, a 5 volt supply ground need to be connected to pins 11, 12, 31, 32 as shown.
+A 100nF capacitor is connected across 5V and ground.
+A 20MHz crystal together with two 22pF capacitors are connected at pins 13 14 to provide the clock source.
+This clock signal will go through a PLL (Phase Locked Loop) to generate a 48MHz clock required for USB operation.
+For this module, you can take Fosc as 48MHz.
+A simple reset circuitry (consisting of a switch and two resistors: 10kOhm 470Ohm) at pin 1 completes the picture.
+Of course, more connections are usually needed, depending on the application.
+For the Micro-controller board used during the practical lessons in this module, the pins 18, 23, 24, 37 are also connected so that a hex file can be downloaded to the PIC18F4550 via the USB port of a PC.
+Likewise, the I/O pins (RA0-5, RB0-3, 5, RC0-2, 6-7, RD0-7, RE0-2) are connected to interface to other input / output devices.
+ET1010 / ET0884 Microcontroller Applications Page 22 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Take a look at the more intelligent version of the Zebra Crossing Lights below.
+If no body presses the buttons, the lights will blink at a certain frequency (e.g.
+1 Hz).
+If a pedestrian presses a button, the lights will blink at a higher frequency and the Buzzer will beep for the next few seconds (e.g.
+10 seconds). Of course, the buttons can be replaced by suitable sensors.
+Zebra crossing Buzzer Light Button Figure 2.4 Intelligent Zebra Crossing Lights The block diagram is shown below: Buttons PIC (Microcontroller) Lights Buzzers Figure 2.5 Block diagram of Intelligent Zebra Crossing Lights ET1010 / ET0884 Microcontroller Applications Page 23 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The flowchart for the Intelligent Zebra Crossing Lights is shown below, Begin Is Button Pressed ? y n On Lights, Off Buzzers.
+Delay 0.5 s Off Lights Delay 0.5 s Set COUNT 1 COUNT n y On Lights, On Buzzers Delay 0.2 s n Off Lights, Off Buzzers Delay 0.2 s Inc COUNT Figure 2.6 Flowchart of Intelligent Zebra Crossing Lights ET1010 / ET0884 Microcontroller Applications Page 24 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic You have learnt how to draw block diagram and flowchart in Chapter 1 on the System level.
+The System block diagram now needs to be decomposed to electronic circuit diagrams and schematics for simple input/output devices as well, e.g.
+a push button as input and an LED as output.
+The push button below gives logic 0 when pressed.
+Such button is said to be Active Low.
+5 V 10 k Button Micro-controller input pin Figure 2.7 Circuit diagram for push button (active low) The micro-controller pin connected to the button must be configured as a digital input pin to read the status of the button i.e.
+pressed or not pressed.
+We will learn how to do this in the next chapter.
+The circuit below is configured in Active High using a Pull-Up resistor.
+5 V Button 10 k Micro-controller input pin Figure 2.8 Circuit diagram for push button (active high) ET1010 / ET0884 Microcontroller Applications Page 25 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The LED below lights up when logic 1 is applied.
+Such LED is said to be active high.
+LED Micro-controller output pin Figure 2.9 Circuit diagram for LED (active high) The micro-controller pin connected to the LED must be configured as a digital output pin to control the status of the LED i.e.
+on or off.
+Again, we will wait until the next chapter.
+Active Low Output circuit LED 5 V Micro-controller output pin Figure 2.10 Circuit diagram for LED (Active Low) The buzzer below is turned on when logic 1 is applied i.e.
+active high.
+Micro-controller output pin Buzzer Figure 2.11 Circuit diagram for LED (Active High) The buzzer can also be connected as active low.
+Again, the micro-controller pin connected to this must be configured as a digital output pin.
+ET1010 / ET0884 Microcontroller Applications Page 26 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+What would be your key considerations in choosing a micro-controller for project? 2.
+Based on the PIC18F4550 pinout diagram in Figure 2.2 in the notes, answer the following questions At which pins should the power supply (5 volts ground) be connected? At which pins should the crystal/oscillator be connected to supply the clock to the PIC? At which pins should the reset button be connected? 3.
+List what are the differences between Digital Input circuits that use Pull Up vs Pull Down resistors.
+What are the differences between parallel communication and serial communication? ET1010 / ET0884 Microcontroller Applications Page 27 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Many I/O (input/output) devices, beside LEDs and switches, can be connected to a micro-controller.
+Various kinds of sensors can be connected to sense the environment.
+Likewise, various kinds of actuators can be connected to bring about some response to changes in the environment.
+For instance, it is hot, so switch on the fan.
+Microcontrollers are highly configurable and versatile devices which require external electronic circuits to interact with the physical environment.
+The PIC18F4550 micro-controller is a low-power device which can be interfaced directly to TTL and CMOS digital devices.
+Most other devices cannot be connected directly to its I/O pins due to the mismatch of some electrical properties: (Reason 1 for interfacing) o A 15V motor cannot be driven directly by the microcontrollers Digital Output pins o An input device producing 12V can damage the Microcontrollers Input pins if connected directly.
+Suitable components/circuits must be placed between the micro-controller pin and the high power devices.
+For PIC18F4550, the maximum current that can be sunk by an I/O pin is 25mA and the maximum current sunk by all ports is 200mA.
+The maximum current that can be sourced by an I/O pin is also 25mA and the maximum current sourced by all ports is also 200mA.
+5 V PIC18F4550 LED Figure 3.7 Current sunk vs.
+current sourced LED ET1010 / ET0884 Microcontroller Applications Page 28 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The micro-controller also has a limited number of I/O pins.
+So sometimes, encoder / decoder are used, to reduce the number of pins required to interface to a device. (Reason 2 for interfacing) The sections below show how common I/O devices can be interfaced to a microcontroller.
+PIC18F4550 LED bar Digital output port Anode Cathode How it looks Figure 3.8 Bar LED An LED bar consists of several (e.g.10) LEDs in a single package.
+It is useful as a level indicator.
+Above, the anodes are driven (via current limiting resistors) by the PIC output pins while the cathodes are grounded.
+The PIC outputs a logic 1 to light up an LED.
+Alternative connection: the cathodes are driven by the PIC output pins while the anodes are connected to Vcc.
+The resistors can be individual resistors or an SIL (single in line) package.
+ET1010 / ET0884 Microcontroller Applications Page 29 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic PIC18F4550 7-segment display Digital output port Figure 3.9 7 segment display How it looks A 7-segment display also consists of several (usually 8) LEDs in a single package.
+The segments are arranged into a figure of 8, and can display one decimal/hex digit. (See multi-digit display regarding the decimal point.) Above, the cathodes are driven (via resistors) by the PIC output pins while the anodes are tied together internally ( - a common anode device ) and connected to Vcc (externally).
+The PIC outputs a logic 0 to light up a segment.
+The C-code is TRISD 0b 0 0 0 0 0 0 0 0 // configure port D as output PORTD 0b 1 0 0 1 0 0 1 0 // display 5 on 7-segment Below, a binary to 7-segment decoder is used to reduce the number of PIC pins required.
+The PIC only needs to output 0 1 0 1 (binary for 5) at the decoder inputs A3-A0.
+The decoder will produce the correct 7-segment pattern (0 0 1 0 0 1 0) to display 5.
+ET1010 / ET0884 Microcontroller Applications Page 30 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic BCD 7-segment 7-segment display PIC18F4550 Digital output port 7-segment decoder Figure 3.10 7 segment display with decoder To display multiple digits e.g.
+1.23, we need several 7-segment displays.
+To reduce the number of I/O pins needed, use the following method, based on persistence of vision, multiplexing transistors as switches.
+PIC18F4550 Digital output port Figure 3.11 multi-digit 7 segment display ET1010 / ET0884 Microcontroller Applications Page 31 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic In Figure 3.11, common cathode displays are used (i.e.
+a logic 1 to light up a segment). RB21 enables Digit2, RB11 enables Digit1, RB01 enables Digit0.
+() Transistors as switches if a logic 1 written to the control input of a transistor, that transistor will be on and the common cathode of the digit will be connected to ground, i.e.
+enabled.
+ET1010 / ET0884 Microcontroller Applications Page 32 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The following code displays the value 1.23 on the 7 segment display while (1) // a infinite loop to show each digit in turn, repeatedly // enable Digit 2 and display 1 with decimal point on on it: PORTB 0 b 0 0 0 0 0 1 0 0 // enable Digit 2 PORTD 0 b 1 0 0 0 0 1 1 0 // show 1.
+on it Delay // introduce a brief delay // enable Digit 1 and display 2 on it PORTB 0 b ____________ // enable Digit 1 PORTD 0 b ____________ // show 2 on it Delay // introduce a brief delay // enable Digit 0 and display 3 on it PORTB 0 b 0 0 0 0 0 0 0 1 // enable Digit 0 PORTD 0 b 0 1 0 0 1 1 1 1 // show 3 on it Delay // introduce a brief delay // RD7-0 are multiplexed to output the digits // one after another.
+What actually happens: Figure 3.12 Persistence of vision ET1010 / ET0884 Microcontroller Applications Page 33 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The 7-segment / switch board used in the lab is shown below.
+Common anode 7-segments are used together with inverting drivers.
+The end result is that a logic 1 lights up a corresponding segment.
+RD7-0 multiplexes out the data to be displayed while RB3-0 enables one digit at a time.
+Figure 3.13 Labs multi-digit 7 segment display ET1010 / ET0884 Microcontroller Applications Page 34 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic PIC18F4550 Digital output port Digital input port Figure 3.14 Matrix keypad Matrix keypad A 4x4 matrix keypad consists of 16 (push button) switches arranged in a matrix.
+Only 8 PIC pins (4 out, 4 in) need to be connected, to know which of the 16 keys has been pressed.
+The scanning mechanism goes like this, a logic 1 is written to only one column (e.g.
+right most or 4 column) and a logic 0 to the rest.
+The rows are then read.
+The row that reads logic 1 uniquely identifies the closed switch.
+If no 1 is read, try the next column e.g.
+3 column, etc.
+We assume that opened switches read 0 ( this is true if there is a weak pull- down inside the PIC ).
+In the lab, the keypad encoder 74C922 is used: ET1010 / ET0884 Microcontroller Applications Page 35 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Figure 3.15 Labs matrix keypad with encoder It has the following truth table.
+X1 Y1 D C B A X2 Y1 X3 Y1 X4 Y1 X1 Y2 X2 Y2 X3 Y2 Keys X1 Y3 X4 Y2 X2 Y3 X3 Y3 X4 Y3 X1 Y4 X2 Y4 X3 Y4 X4 Y4 D A D (msb), C, B, A identify the key pressed.
+For instance, if key 2 is pressed, X2, Y1 cause DCBA 0001.
+The DA (data available) signal will be set to logic 1, whenever a key is pressed.
+The code to read the key is as follows const unsigned char lookup 123F456E789DA0BC while (PORTBbits.RB5 0) //wait for a key to be pressed: DA1 temp PORTB 0x0F //read from encoder, mask off top 4 bits KEY lookup temp // look up table to find key pressed ET1010 / ET0884 Microcontroller Applications Page 36 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic An alphanumeric LCD is commonly used with a micro-controller to prompt the user for inputs e.g.
+password or preset temperature.
+The numbers and alphabets can be displayed in 2 rows of say, 16 characters.
+Figure 3.16 Alphanumeric LCD display 4-bit mode In the 4-bit mode above, a byte (8 bits) can be written as two nibbles (one nibble 4 bits), one after another, via RD3-0.
+Figure 3.17 Alphanumeric LCD display 8-bit mode ET1010 / ET0884 Microcontroller Applications Page 37 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic For this module, the details of how transistors work is not important, as we will be using transistors as switches only.
+Transistors have been used as switches in the multi-digit 7-segment display earlier and in the buzzer, motor, solenoid to be covered next.
+Suitable transistors include 2N2222.
+3.16 Interfacing to buzzer When the PIC outputs a logic 0, the (BJT) transistor is OFF.
+This turns the buzzer OFF (as it is reverse-biased: 0 - +, Vcc - -).
+When the PIC outputs a logic 1, the transistor is ON (Vcesat 0.2 volt). This turns the buzzer ON.
+PIC18F4550 Vcc Piezo Buzzer Digital output pin C B E Figure 3.18 Buzzer A rectangular pulse train / wave can be produced at the PIC output pin to produce a tone.
+By varying the frequency ( duty cycle) of the wave, the pitch ( loudness) of the tone can be controlled.
+We will do this in the Timer topic.
+ET1010 / ET0884 Microcontroller Applications Page 38 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic When the PIC outputs a logic 0, the motor is OFF.
+When the PIC outputs a logic 1, the transistor (usually a Darlington 2 transistors in cascade, for increased current) is ON.
+This turns the motor ON, as there is now a path for the current to flow from Vcc through the motor and the transistor, to the ground.
+Vcc PIC18F4550 DC motor M Digital output pin C B E 1 closes switch 0 opens switch Figure 3.19 DC Motor When the transistor is turned from ON to OFF, the shunt diode allows current to continue to flow for a short while.
+Otherwise, the motor circuit would be damaged.
+M A rectangular wave can be produced at the PIC output pin to control the motor speed.
+When the duty cycle is high (), the motor moves faster.
+Again, we will do this (so called Pulse Width Modulation or PWM) in the Timer topic.
+Duty Cycle is proportion of On time to the Period expressed as a percentage value.
+ET1010 / ET0884 Microcontroller Applications Page 39 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic It is also possible to control the motor direction, by using 4 transistors arranged as a bridge.
+The motor circuit can also be used for a solenoid.
+A solenoid is an electromagnet which when energised, can suck in (or push out) an iron bar.
+This is useful in electronic lock, for instance.
+3.18 Driving highpower device via mechanical relay the need for power isolation All the devices discussed so far are low power devices that can share the same Vcc (5volt) with the micro-controller circuit.
+Sometimes, a motor / solenoid / valve etc that requires higher voltage (e.g.
+12 / 24 V, or even 230 V ac) must be used in a micro-controller application.
+In such cases, a separate power source can be used for the high power device and a mechanical relay used to isolate it from the low power circuitry, as follows.
+When the transistor is on and the relay energised, the switch for the high power device will be closed.
+24 V (e.g.) Vcc High power PIC18F4550 relay Digital output pin C B E ground for low power side ground for high power side 5V circuitry 24V circuitry Figure 3.20 Mechanical relay for power isolation ET1010 / ET0884 Microcontroller Applications Page 40 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic PIC18F4550 has 5 I/O ports: Ports A to E.
+Why are I/O ports required? The micro-controller is an intelligent device.
+For it to be really useful, it must be able to monitor the status of some input devices e.g.
+sensors and to control some output devices e.g.
+actuators.
+In the figure below, the micro-controller monitors the temperature of a laptop.
+If the temperature exceeds a preset threshold e.g.
+30 deg Celsius, the fan will be switched on.
+Temperature sensor Micro- controller Fan Lab-top cooler Figure 3.1 Micro-controller + input + output Examine the PIC18F4550 pin diagram below.
+Can you see where the Port A pins are? How many are there? How are they numbered? Port A Figure 3.2 PIC18F4550 I/O ports ET1010 / ET0884 Microcontroller Applications Page 41 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Many pins are multiplexed with alternate functions from the peripheral features, e.g.
+RA0 is also AN0 i.e.
+an analogue input.
+Likewise, RA1, RA2, RA3 RA5 can be AN1, AN2, AN3 AN4 respectively.
+In general, when a peripheral is enabled, that pin may not be used as a general purpose I/O pin.
+On the micro-controller board you are using in the lab, the available Port A pins are RA5-0.
+Pin 14 (RA6) is connected to the oscillator, so RA6 is not available.
+Figure 3.3 General purpose I/O pins available on the micro-controller board Upon power on reset, RA5 and RA3-0 are configured as analogue inputs and RA4 is configured as a digital input.
+To turn Port A into a digital I/O port, use the C-language command below.
+How this works is explained on the next page (no need to know the explanation in details).
+ADCON1 0x0F or ADCON1 0b00001111 ET1010 / ET0884 Microcontroller Applications Page 42 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Figure 3.4 Making Port A a digital I/O port by ADCON1 0x0F The detailed explanation of the Analog to Digital Converter will be explained in the next chapter.
+ET1010 / ET0884 Microcontroller Applications Page 43 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic TRISA PORTA Port A is a 7-bit wide bidirectional port.
+The registers associated with Port A are TRISA and PORTA.
+TRISA is the data direction register for Port A.
+Setting a TRISA bit ( 1 ) will make the corresponding PORTA pin an input.
+Clearing a TRISA bit ( 0 ) will make the corresponding PORTA pin an output.
+For instance: RA6 RA5 RA4 RA3 RA2 RA1 RA0 Outputs Inputs Figure 3.5 Configuring Port A pins as inputs / outputs using TRISA In the figure above, the C-language command TRISA 0x0F or TRISA 0b00001111 is used to make RA6-4 output pins and RA3-0 input pins.
+Note: TRISA bit 7 is unimplemented so it doesnt matter what is written to that bit.
+An easy way to remember this is 0 (zero) looks like O (in Output) while 1 (one) looks like I (in Input).
+RA6 RA5 RA4 RA3 RA2 RA1 RA0 Input Input Output Output Input Input Input PORTA TRISA Upon reset, TRISA 0b - 1 1 1 1 1 1 1, i.e.
+PORTA is an input port by default.
+ET1010 / ET0884 Microcontroller Applications Page 44 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The circuit diagram below shows how an LED can be connected as an output and a switch as an input.
+Find out why the two 470-ohm resistors are required.
+5 V Micro-controller RA0 RA1 LED Switch 10 k Figure 3.6 LED as output and switch as input Based on the circuit above, RA1 is connected to the LED circuit as an Output pin RA0 is connected to the switch circuit as an Input pin Therefore the register TRISA needs to be written with the value 0b00000001 with bit 0 set to 1 and bit 1 set to 0 ET1010 / ET0884 Microcontroller Applications Page 45 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic How can the micro-controller know if the switch is closed or open? It can be seen from the diagram that the switch is active high i.e.
+closed switch logic 1, while opened switch logic 0.
+The C-language command to read the switch status is if ( PORTAbits.RA0 1 ) // if switch closed . // do something An more portable alternative to read input pin values using standard C bitmask operations is show below if ( ( PORTA 0b00000001 ) ( 0b00000001 ) ) // if switch closed . // do something ET1010 / ET0884 Microcontroller Applications Page 46 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The PIC specific C code to write to set a single output pin Port A Pin 1 to logic High is shown in the example below PORTAbits.RA1 1 However a more portable method that can be used on most microcontrollers is to use standard C bit masking operations as shown in the example code below PORTA PORTA 0x01 // Set Port A Pin 1 to Logic High PORTA PORTA 0xFE // Set Port A Pin 1 to Logic Low As Port A has already been discussed in details, the description below for the other ports will be brief.
+Port B Port C Port B is a 8-bit wide bidirectional port.
+TRISB is the data directional register for PORTB.
+Remember 1 Input, 0 Output.
+Examine the PIC18F4550 pin diagram (in Figure 3.2) again.
+Where are the 8 Port B pins RB7-0? What other peripherals use these pins? Upon power on reset, RB7-0 are configured as digital inputs.
+On the micro-controller board (see Figure 3.3), the available Port B pins are RB7- 5 and RB3-0.
+Pin 37 (RB4) is connected to an active low switch, so RB4 is not available.
+Port C is a 7-bit wide bidirectional port.
+RC3 pin is not implemented.
+TRISC is the data directional register for Port C.
+However, RC4 and RC5 do not have TRISC bits associated with them they can only function as digital inputs.
+Port C is primarily multiplexed with the serial communication modules e.g.
+the USB module.
+Upon power on reset, RC7-4, RC2-0 are configured as digital inputs.
+On the micro-controller board (see Figure 3.3), the available Port C pins are RC7-6 and RC2-0.
+Pin 23 (RC4) are used for USB downloading of hex file into the micro-controller, so RC5-4 are not available.
+ET1010 / ET0884 Microcontroller Applications Page 47 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Port D Port E Port D is a 8-bit wide bidirectional port.
+TRISD is the data directional register for Port D.
+Port D is multiplexed with the Enhanced CCP module and the Streaming Parallel Port (SPP).
+Upon power on reset, RD7-0 are configured as digital inputs.
+On the micro-controller board (see Figure 3.3), the Port D pins RD7-0 are all available.
+Port E is a 4-bit bidirectional wide port.
+TRISE is the data directional register for Port E.
+However, RE3 does not have TRISE bit associated with it it can only function as input.
+Similar to other ports, Port E is multiplexed with other functions.
+Upon power on reset, RE2-0 are configured as analogue inputs, while RE3 is configured as a digital input (RE3 is only available if Master Clear (/MCLR) functionality is disabled).
+To turn Port E into a digital I/O port, use the C-language command below.
+ADCON1 0x0F // there are other possibilities On the micro-controller board (see Figure 3.3), the available Port E pins are RE2- 0.
+Pin 1 (RE3) is used as the active low Master Clear (/MCLR) input, so RE3 is not available.
+ET1010 / ET0884 Microcontroller Applications Page 48 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+State the purpose of the following sensors Sensor LDR PIR Tilt switch Ultrasonic ranger Purpose Study the Figure 3.7 below below and fill in the blanks to describe how the I/O ports are used as digital inputs / outputs.
+Figure 3.7 Monitoring status of switches, using LEDs a.
+Which microcontroller pins are connected to inputs and outputs? b.
+Write the C code required to configure the pins as digital inputs.
+ET1010 / ET0884 Microcontroller Applications Page 49 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic c.
+What is the logic level read by the microcontroller when the switch is closed and opened? d.
+Write the C code required to turn ON the LEDS connected to pins RD0, RD1 and RD2.
+In an Active High output circuit, a logic 1 is written to the output pin will set the LED to turn ON or OFF? 3.
+If the micro-controller outputs 5V at a pin and the LED drops 1.8V and the current-limiting resistor used is 470 ohms, calculate the current in the LED.
+The short program below shows how the LEDs can be used to indicate the status of the switches, i.e.
+a closed switch lights up the corresponding LED.
+Fill in the comments to explain the blank comments to explain the lines of code below include // other lines of code before main........
+main() // configure Port B as digital input and Port D as digital output // TRISB 0xFF -- is not necessary as, upon reset, Port B is input TRISD ______ // upon reset RD7-0 are digital inputs so make them outputs while (1) // continuously monitor // alternative 1: if (PORTBbits.RB0 0) //__________________________________ PORTDbits.RD0 1 // __________________________________ else PORTDbits.RD0 0 // __________________________________ if (PORTBbits.RB1 0) PORTDbits.RD1 1 else PORTDbits.RD1 0 if (PORTBbits.RB2 0) PORTDbits.RD2 1 else PORTDbits.RD2 0 // alternative 2: // PORTD PORTB --- copy complemented PORTB to PORTD Delay // introduce some delay before checking switch status again // while // main ET1010 / ET0884 Microcontroller Applications Page 50 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Why are A/D D/A converters required in a micro-controller application? Although a micro-controller can process data at high speed accuracy (repeatedly without complaining), it can only work with digital data.
+But, the outside world is analogue.
+All the physical quantities that matters temperature, pressure, humidity, light intensity etc are analogue.
+A transducer is a device that converts a physical quantity e.g.
+length, weight, brightness, loudness into an electrical quantity voltage or current which is still analogue in nature.
+An A/D (analogue to digital) converter converts an analogue signal (e.g.
+3.25V) to a corresponding digital number (e.g.
+666 1010011010), a D/A (digital to analogue) converter does the reverse.
+As can be seen in the dashed box below, the PIC18F4550 has a built-in A/D converter module.
+If analogue output is to be produced, a D/A converter is still required.
+physical quantity e.g.
+temperature transducer PIC18F4550 analogue electrical signal (voltage) A/D converter Micro- controller D/A converter analogue info.
+(voltage) di it l i f Figure 4.1 Analogue world, digital controller ET1010 / ET0884 Microcontroller Applications Page 51 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic In a digital thermometer, a pair of wires (made of dissimilar alloys) produces a milli-volt output corresponding to the temperature being measured.
+This output is amplified and then A/D converted for display on the LCD.
+amplifier PIC with built in A/D converter Figure 4.2 Digital thermometer The resistance of an LDR (Light Dependent Resistor) depends on the ambience brightness.
+By using it in a potential divider circuit, a voltage output corresponding to the brightness can be produced.
+This can be A/D converted by the micro-controller and then used to make intelligent decision.
+For instance, if it is dark, switch on the lights (on the overhead bridge) automatically.
+The darker it is, the more lights will be switched on.
+ET1010 / ET0884 Microcontroller Applications Page 52 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Figure 4.3 Measuring brightness using LDR ET1010 / ET0884 Microcontroller Applications Page 53 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic There are 2 main steps in the A/D conversion.
+First, during acquisition time, the analogue voltage input (Va) is sampled held imagine the switch is closed (and later opened) to make ( freeze) an exact copy of Va (as Vin). After acquisition, Vin will remain unchanged even though Va continues to vary.
+acquire Va Sample hold Vin A/D converter Digital result Vref+ Vref- Digital result X 2- 1 V V V - V Figure 4.4 Sample and hold and A/D conversion formula Next, during A/D conversion, the sampled input Vin is converted to its 10-bit digital equivalent, using the formula given.
+Vand V are the reference voltages.
+For simplicity, assume that V Vcc i.e.
+5V and V Vss i.e.
+ground or 0V.
+If Vin 3.25V, the digital result Vin 0V 3.25V x 2 1 x 1023 665 1010011001 5V 0V 5V If Vin V, the conversion result would be V . Likewise, if Vin V, the conversion result would be V.
+ET1010 / ET0884 Microcontroller Applications Page 54 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Quantization error (Optional) In a 10-bit A/D converter, there are only 2 1024 different digital levels (0 1023).
+When an analogue input is digitized, because of the finite number of digital levels, the difference between the actual analogue value and the digital representation is called the quantization error.
+If the reference voltages used are 5V and ground i.e.
+an input range of 5V, the maximum quantization error is 5V / 1023 / 2 2.44 mV.
+To see why this is the case, consider a simpler case a 4-bit A/D converter with an input voltage range of 0-3V.
+The truth table follows: Analogue Input Volts 0.2 0.4 0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 D Digital Representation D D D Figure 4.5 A/D converter with 0-3V input and 4-bit result The step size is 3V / (2-1) 0.2V i.e.
+every 0.2 volt increase in the input voltage results in the binary result increasing by 1.
+So, 0V is represented as 0000 while 0.2V is represented as 0001.
+However, 0.0999V is still represented as 0000.
+Hence the biggest quantization error is half the step size.
+And an A/D with more bits will be more accurate.
+ET1010 / ET0884 Microcontroller Applications Page 55 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Figure 4.6 Quantization in A/D converter ET1010 / ET0884 Microcontroller Applications Page 56 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The PIC18F4550s A/D converter module has 13 input channels (for the 40-pin devices). At any one time, only one channel can be selected for conversion.
+And a micro-controller application seldom requires all 13 inputs to be used the unused pins can be configured as digital I/O pins.
+This module allows conversion of an analogue input to a corresponding 10-bit digital number.
+Figure 4.7 Structure of PIC18F4550s A/D converter The user is allowed many choices e.g.
+which analogue input pin to use, what reference voltages (V V) to use, how much time to sample the analogue input, which clock source to use for the A/D conversion etc.
+ET1010 / ET0884 Microcontroller Applications Page 57 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The PIC18F4550s A/D converter module has five registers: o A/D Result High Register (ADRESH) o A/D Result Low Register (ADRESL) o A/D Control Register 0 (ADCON0) o A/D Control Register 1 (ADCON1) o A/D Control Register 2 (ADCON2) How these registers are used in the A/D conversion will be described below.
+The ADCON0 register controls the operation of the A/D module.
+Figure 4.8 ADCON0 ET1010 / ET0884 Microcontroller Applications Page 58 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic CHS3:CHS0 select the analogue channel.
+For instance, on the General I/O Board used in the lab, a variable resistor is connected to RA0 (Port A Pin 0 also pin 2 or AN0). To use AN0 to read this analogue input (which can vary continuously from 0 to 5 volts), set CHS3:CHS0 0000.
+Figure 4.9 Variable resistor connected to RA0/AN0 Setting ADON 1 enables the A/D converter module.
+C code: ADCON0bits.ADON 1 Setting GO 1 (with ADON set) starts the A/D conversion.
+C code: ADCON0bits.GO 1 The same bit (GO/ ) becoming 0 indicates that the A/D conversion is complete.
+ET1010 / ET0884 Microcontroller Applications Page 59 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The ADCON1 register configures the voltage references and the functions of the port pins.
+Figure 4.10 ADCON1 VCFG1:VCFG0 configures the voltage reference.
+ET1010 / ET0884 Microcontroller Applications Page 60 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Pin A? D? If both bits are cleared, the VREF+ VDD i.e.
+5 V while VREF- VSS i.e.
+0 V.
+C code: ADCON1bits.VCFG1 0 ADCON1bits.VCFG0 0 As can be seen above, these reference voltages (VREF+ VREF-) could also come from the pins AN3 and AN2.
+PCFG3:PCGF0 divide the I/O pins between analogue and digital usage.
+The table below (or the PIC18F4550s pin diagram in Chapter 2) shows 13 (possible) analogue input pins.
+AN1 AN1 AN1 AN9 AN8 AN7 AN6 AN5 AN4 AN3 AN2 AN1 AN0 RB0 RB4 RB1 RB3 RB2 RE2 RE1 RE0 RA5 RA3 RA2 RA1 RA0 D D D D D D D D D D D D A Figure 4.11 Analogue or digital I/O pins Setting PCFG3:PCGF0 1110 configures pin 2 (AN0) as an analogue input and the rest as digital inputs.
+C code: ADCON1bits.PCFG3 1 ADCON1bits.PCFG2 1 ADCON1bits.PCFG1 1 ADCON1bits.PCFG0 0 As can be seen in the diagram on the previous page, if only two analogue inputs are required, AN0 and AN1 can be selected.
+If only three analogue inputs are required, AN0, AN1 and AN2 can be selected etc.
+ET1010 / ET0884 Microcontroller Applications Page 61 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The ADCON2 register configures the A/D clock source, programmed acquisition time and justification.
+Figure 4.12 ADCON2 You can also write ADCON2 0 b 0 0 0 1 0 1 1 0 to achieve the same results.
+When an A/D conversion is completed, the 10-bit result is stored in the registers ADRESH and ADRESL, either left-justified or right-justified, depending on the value of the ADFM bit, as shown below.
+Note that the other bits are filled with 0s.
+ADFM 1 10-bit result ADFM 0 H L H L 10-bit, right-justified 10- bit, left-justified Figure 4.13 Right or left justification ET1010 / ET0884 Microcontroller Applications Page 62 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic A/D clock source The A/D conversion time per bit is defined as T. (T is actually the period of the conversion clock.) The A/D conversion requires 11 T per 10-bit conversion.
+The source of the A/D conversion clock is software selectable using ADCS2:ADCS0.
+For correct A/D conversions, the A/D conversion clock (T) must be as short as possible but greater than the minimum T i.e.
+0.7 us.
+Figure 4.14 Minimum T The table below shows the resultant T times derived from the device operating frequencies and the A/D clock source selected.
+Figure 4.15 T vs device operating frequencies For instance, if Fosc 48 MHz and ADCS2:ADCS0 110, T 64 T 64 / 48 MHz 1.33 us ( the 0.7 us minimum specified).
+Acquisition time For an accurate A/D conversion, the charge holding capacitor (refer to Figure 4.4) must be allowed to fully charge to the selected analogue input channels voltage level i.e.
+the input channel must be sampled for at least the minimum acquisition time before a conversion is started.
+ET1010 / ET0884 Microcontroller Applications Page 63 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic You may refer to the PIC18F4550 datasheet for the calculation of the minimum acquisition time. (When it is difficult to do the calculation, large acquisition time is a safe choice.) ACQT2:ACQT0 selects the acquisition time.
+Setting ACQT2:ACQT0 010 cause acquisition time to be equal to 4 T.
+If T 1.33 us, acquisition time 4 x 1.33 us 5.32 us.
+Figure 4.16 Acquisition A/D conversion As can be seen in the diagram above, after the GO bit is set, the holding capacitor continues to acquire the input for 4 T i.e.
+automatic acquisition time.
+Automatic acquisition time does not happen when ACQT2:ACQT0 000.
+In this case, the user has to ensure enough acquisition time elapses before conversion is started with GO 1 we will not use this.
+After the acquisition time, conversion starts and it takes 11 T before conversion is completed.
+Then the result loaded is loaded into ADRESH:ADRESL and the GO/ bit cleared to indicated end of conversion.
+The holding capacitor is connected to analogue input for the next cycle.
+ET1010 / ET0884 Microcontroller Applications Page 64 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Note that it is possible for the completion of an A/D conversion to cause an interrupt.
+We will not use interrupt with A/D conversion in this chapter.
+Note also that the port pins needed as analogue inputs must have their corresponding TRIS bits set (input).
+The following steps should be followed to perform an A/D conversion: 1.
+Configure the A/D module - configure voltage reference, and analogue/digital I/O (ADCON1) - select A/D input channel (ADCON0) - select A/D acquisition time (ADCON2) - select A/D conversion clock (ADCON2) turn on A/D module (ADCON0) Wait the required acquisition time (if required).
+Start conversion - Set GO/ ) (ADCON0) Wait for A/D conversion to complete, by polling for the GO/ ) bit to be cleared.
+After a minimum wait of 3 T, go to step 1 (or 2, if no changes to the configuration are required ,) for the next conversion.
+() If more than 1 analogue input channel is used, there is a need to go back to step 1 to switch channel i.e.
+the channels are sampled converted one by one, in a predetermined order.
+ET1010 / ET0884 Microcontroller Applications Page 65 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic In the example below, a variable resistor is connected to AN0 and a program is written to configure the A/D converter and then to repeatedly sample the analogue input, convert to digital equivalent, and output the most significant 8- bits to the LED bar for display.
+Vdd A/D converter 5 V Analogue input AN0 Digital output at Port Figure 4.17 Sampling the trimmer for display on the LED bar main (void) TRISD 0x00 PORTD 0x00 // configure Port D as output - for LED bar // initialise Port D all LEDs off // configure A/D converter module switch it on ADCON0 0 b 0 0 0 0 0 0 0 1 // bits 5:2 0000, channel AN0 selected // bit 0 1, A/D activated (powered up) ADCON1 0 b 0 0 0 0 1 1 1 0 // bit 5 0, Vref- Vss (0V) // bit 4 0, Vref+ Vdd (5V) // bits 3:0 1110, pin AN0 as analogue input ADCON2 0 b 0 0 0 1 0 1 1 0 // bit 7 0, result left justified // bits 5:3 010, acquisition time 4 TAD // bits 2:0 110, conversion clock FOSC/64 while (1) ADCON0bits.GO 1 while (ADCON0bits.GO 1) PORTD ADRESH // start A/D conversion // wait here for /DONE to becomes 0 // output upper 8-bit of result to LED bar ET1010 / ET0884 Microcontroller Applications Page 66 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+Determine the digital result if Vin 2.5V and 5V and ground are used as voltage references.
+Determine Vin if the digital result is 0111001110 and 5V and ground are used as voltage references.
+Complete the C code below to select channel 3 for conversion ADCON0bits.CHS3 _____ ADCON0bits.CHS2 _____ ADCON0bits.CHS1 _____ ADCON0bits.CHS0 _____ 4.
+Determine the 10-bit result of an A/D conversion, given that ADFM 0, ADRESH 0xA3 and ADRESL 0x80.
+If the above 10-bit result is to be displayed on 8 LEDs (of an LED bar) connected to PORT D, which of the following is a better choice? (a) PORTD ADRESH or (b) PORTD ADRESL 6.
+Complete the C code below to select left justification, acquisition time of 4 T, F/64 as the clock source ADCON2bits.ADFM _____ ADCON2bits.ACQT2 _____ ADCON2bits.ACQT1 _____ ADCON2bits.ACQT0 _____ ADCON2bits.ADCS2 _____ ADCON2bits.ADCS1 _____ ADCON2bits.ADCS0 _____ ET1010 / ET0884 Microcontroller Applications Page 67 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 5.1 C language fundamentals define include directives, comments, constants, variables, operators This short chapter serves as a quick revision on the important concepts in the C programming language previously covered in the Structured Programming module The define pre-processor directive is used to define a constant If you include the directive define switch_1 PORTBbits.RB5, writing if (switch_1 0) is the same as writing if (PORTBbits.RB5 0) .
+The usage of define improves the portability of the code which means it would reduce the effort and complexity to migrate the C code to a different microprocessor The include directive includes the code from another source file at the point where the include appears in the source code.
+The inserted file may contain any number of valid C statements.
+ET1010 / ET0884 Microcontroller Applications Page 68 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 5.3 Code Comments Comments are used to describe and explain the source code.
+The C pre-processor will parse the source code and remove any comments before actual compilation into assembler code Example: // This is a single line comment / This is a multiple line comment.
+It is good to include lots of comments in your source code, so as to remind yourself why you write the code in a certain way.
+Others in the project team will also be able to follow the code.
+The comment can stretch over many lines and is terminated by a / 5.4 Constants The value of a constant never changes.
+In C language, a constant can be a number, a single character or a character string.
+Example: 0x0C 0b1100 Hello World y Example: Decimal Hexadecimal for 12 Binary for 12 a string constant a char constant const float PI 3.14 // this declares a floating point constant // it is a common practice to capitalize constants ET1010 / ET0884 Microcontroller Applications Page 69 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 5.5 Variables The value of a variable changes as the program executes.
+The variable can be of the following data types: Data type Remarks Number of Bits Range no type not applicable not applicable void char single character unsigned char unsigned single character int integer unsigned int unsigned integer long long integer unsigned long unsigned long integer Float / double floating point -128 to 127 0 to 255 -32768 to 32767 0 to 65535 -2,147,483,648 to 2,147,483,647 0 to 4,294,967,295 1.7549435 E-38 to 6.80564693 E+38 Figure 5.2 Basic data types Negative numbers are represented in the twos complement format.
+All variables must be declared before they are used.
+When you declare a variable, choose an appropriate data type.
+Example: char reply // a char to store y (yes) or n (no) as reply unsigned char count // this is a byte (or 8 bit) that stores // non-negative count value int num // this is a 16-bit variable that stores both +ve -ve // values, from -32768 to 32767 ET1010 / ET0884 Microcontroller Applications Page 70 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Global variables are declared outside of functions It can be accessed by any function with the same C source file Example: unsigned int ticks // global variable can be used by any function that // appears after this main (void) unsigned char count // local variable can be used by main only .
+ET1010 / ET0884 Microcontroller Applications Page 71 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 5.6 Operators Used for the calculation of the basic mathematical operations for below.
+addition subtraction multiplication division Example: -b count 163 a b c / b negative b variable count minus 163 a multiplied by b c divided by b false) based on the comparison greater than greater than or equal to equal to not equal to less than less than or equal to count 0 value MAX input BADVAL is count greater than 0 ? is value less than or equal to MAX ? is input not equal to BADVAL ? Flags MASK Flags 0x07 Val 2 if MASK 0b00000111, the upper 5 bits of Flags will be filtered or masked off, while the lower 3 bits will be unchanged.
+invert bits 0, 1 and 2 shift left by 2 bits i.e.
+multiply by 4 ET1010 / ET0884 Microcontroller Applications Page 72 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Logical AND Logical OR Logical NOT Lecture_Open (Students MIN) - checking that the lecture theatre is open and there are enough students turning up Bitwise AND Bitwise OR Bitwise XOR Right shift Left shift ET1010 / ET0884 Microcontroller Applications Page 73 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 5.11 C language fundamentals functions program control statements Functions are the basic building blocks of a C program.
+All executable statements must reside within a function.
+The main() is the entry point in every C program and must always be defined at least once as this is the function that will be first invoked when the microcontroller starts up after a reset.
+A function prototype should be declared before the function is called.
+A function prototype declares the return type, function name, and types of parameters for a function, but no other statements.
+A function must be defined before it can be invoked else there the C code will not compile successfully.
+Example: unsigned char AddOne (unsigned char x) // prototype terminated by // actual function below unsigned char AddOne (unsigned char x) // x is a local variable return (x + 1) ET1010 / ET0884 Microcontroller Applications Page 74 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 5.12 Program control statements Program control statements control the flow of execution in a source code.
+Relational and logical operators determine which execution path the code will branch to.
+Loops are also used to execute code iteratively.
+if-else statements are called conditional statements.
+The code encapsulated with an if block is only executed if the outcome of the evaluated condition is True.
+Else the else code block is executed if the conditional statement result is evaluated False.
+Example: if (second 59) second 0 minute + 1 if-else statement: The most general form of if-else is if (expression) statement1 else statement2 Example 1: if (a b) smaller a // single statement else smaller b ET1010 / ET0884 Microcontroller Applications Page 75 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Example 2: if (num 0) num 0 // multiple statement Valid 0 else Valid 1 In the scenario that there are several discrete if-else if conditions required, a cleaner implementation is to use the switch case conditional statements switch (expression) case const1 : statement1(s) break case const2 : statement2(s) break default : statement3(s) break for loops are used to repeat a code execution for a predefined number of iterations.
+for (initialization expression increment) statement ET1010 / ET0884 Microcontroller Applications Page 76 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Example: unsigned char i for (i 0 i 10 i++) do_something () i 0 NO i 10 ? YES do_something () i++ Figure 5.3 Flowchart for for loop ET1010 / ET0884 Microcontroller Applications Page 77 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic while loops are used to repeat the execution of a block of code based on a defined condition When the conditional statement is evaluated as True, the while loop code block continues to the next iteration However when the conditional statement is evaluated as False, the while loop code block is not executed and the while loops is stopped as code continues on the next executable line of code after the while loop code block.
+while (expression) statement The code below is alternative implementation to a for loop using the while loop instead and terminates after 10 iterations.
+i 0 while (i 10) do_something () i i + 1 The code below runs an infinite while loop that will never terminate since the condition evaluated is always 1 or True.
+while (1) do_something_forever() ET1010 / ET0884 Microcontroller Applications Page 78 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+A C code variable student_count is defined to keep track of the number of students in a lecture theatre.
+If the lecture theatre has a maximum seating capacity of 300 students, write 1 line C code to declare and initialize the variable student_count with an initial value of 0.
+What is the resultant value of the variable test_var_u8 after the C code below is executed? unsigned char test_var_u8 0x01 test_var_u8 test_var_u8 4 3.
+Based on the PIC 18F4550, pins RA0 to RA7 are connected in active high configuration to LED0 to LED7 respectively.
+Based on the following C code, which LED/s will be turned on after the code has finished execution? unsigned char output_u8 0x80 / Set all pins in PORTA as Digital Outputs / TRISA 0x00 output_u8 output_u8 0x02 / Write output_u8 to PORTA to control LED0 to LED7/ PORTA output_u8 4.
+Using the appropriate C pre-processor directives, rewrite the following code to improve the portability of the code to other microcontrollers in the future.
+/ Configure Port B Pin 4 as Output / TRISBbits.TRISB4 0 / Set Port B Pin 4 to logic high / PORTBbits.RB4 1 ET1010 / ET0884 Microcontroller Applications Page 79 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Many micro-controller applications have timing requirements.
+For instance, you may want to switch off the light 30 seconds after the last person leaves a room: Sensor Light On Sensor Light Off after 30 s Figure 6.1 Automatic room light Sometimes you may want to measure a time duration, for instance, how long has a signal been set to high.
+Signal How long is the high pulse? Figure 6.2 Measuring pulse width You will learn how to schedule an event (e.g.
+light off 30 s after person leaves) and how to measure the elapsed time etc in the next section.
+Note that the two examples are opposite: In scheduling an event, you wait for certain duration to pass before you do something.
+In measuring the elapsed time, you wait for an event (pulse goes from high to low) before you stop the stop watch and see how long it has been.
+ET1010 / ET0884 Microcontroller Applications Page 80 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic A counter counts up every time a clock pulse arrives: 16-bit Count Clock Clock Count 0x0000 0x0001 0x0002 0x0003 0x0004 Figure 6.3 16-bit counting If the clock period is fixe.
+a device that lets you know how much time has passed.
+For instance, clock period 10 us, a count of 1,234 is equivalent to 12,340 us or 12.34 ms.
+The clock could be generated by events for instance, boxes (on a conveyor belt) passing an infra-red sensor which produces pulses that can be used as a clock signal: IR detector Clock signal from IR sensor Box Counter How many boxes? IR transmitter Figure 6.4 Box counting In this case, the clock period is neither fixed nor known.
+So, the counter tells you how many boxes have moved pass the IR sensor but not how much time has passed.
+It is just a counter.
+ET1010 / ET0884 Microcontroller Applications Page 81 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic PIC18F4550 has 4 timers: Timer0 to Timer3.
+The key features of each is highlighted in the table below: Feature\Timer Counting range Timer0 8-/16-bit timer or counter Timer1 16-bit timer or counter Pre-scaler 1, 2, 4256 1, 2, 4, 8 Clock source Interrupt internal/ external on overflow Other special features edge select for external clock internal/ external on overflow has its own internal oscillator Timer2 8-bit timer (TMR2) and period (PR2) registers 1, 4, 16 Also post- scaler 1, 2, 3,6 internal on TMR2 PR2 match can compare register value Timer3 16-bit timer or counter 1, 2, 4, 8 internal/ external on overflow can use TMR1 internal oscillator Figure 6.5 Key features of Timer0 to Timer3 As the timers are very similar, we will not study everything.
+We will learn how to use Timer0 well, and then learn the special feature of Timer2.
+ET1010 / ET0884 Microcontroller Applications Page 82 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Before we go into the details of Timer0, lets look at a simple scenario you want an LED to be turned on, 0.1 second after a button is pressed.
+You can write a C program to achieve this: while (PORTBbits.RB0 1) // wait for active low button at RB0 to // be pressed Delay PORTDbits.RD0 1 // 0.1 s delay // turn on active high LED at RD0 In the above example, the turning ON of the LED is scheduled to take place 0.1 second after the trigger i.e.
+button pressed.
+Lets see how the 0.1 s delay can be achieved using Timer0.
+Timer0 operation uses the following registers: TMR0H, TMR0L, T0CON and the TMR0IF bit of the INTCON register.
+The key points are highlighted below.
+TMR0H and TMR0L (Timer0 High and Low Registers) D15 D14 D13 D12 D11 D10 D9 D8 D7 D6 D5 D4 D3 D2 D1 D0 TMR0H TMR0L These two 8-bit registers together form a 16-bit timer/counter.
+INTCON (Interrupt Control Register) bit 2 TMR0IF (Timer0 Interrupt overflow Flag) TMR0IF TMR0IF is set to 1 whenever the timer overflows i.e.
+count from FFFF to 0000 (in 16-bit mode) or from FF to 00 (in 8-bit mode).
+Other bits are associated with the operations of other peripherals e.g.
+ADC etc.
+Figure 6.6 Timer0 registers TMR0H, TMR0L, INTCON ET1010 / ET0884 Microcontroller Applications Page 83 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic T0CON (Timer0 Control Register) TMR0ON T08BIT T0CS T0SE PSA T0PS2 T0PS1 T0PS0 TMR0ON D7 Timer0 ON and OFF control bit 1 Enable (start) Timer0 0 Stop Timer0 T08BIT D6 Timer0 8-bit / 16-bit selector bit 1 Timer0 is configured as an 8-bit timer/counter 0 Timer0 is configured as a 16-bit timer/counter T0CS D5 Timer0 clock source select bit 1 External clock from RA4/T0CK1 pin 0 Internal clock (Fosc/4 from XTAL oscillator) T0SE D4 Timer0 source edge select bit 1 Increment on H-to-L transition on T0CK1 pin 0 Increment on L-to-H transition on T0CK1 pin PSA D3 Timer0 pre-scaler assignment bit 1 Timer0 clock input bypasses pre-scaler 0 Timer0 clock input comes from pre-scaler output T0PS2:T0PS0 Timer0 pre-scaler selector D2 D1 D0 0 0 0 1:2 Pre-scale value (Fosc/4/2) Pre-scale value (Fosc/4/4) Pre-scale value (Fosc/4/8) Pre-scale value (Fosc/4/16) Pre-scale value (Fosc/4/32) Pre-scale value (Fosc/4/64) Pre-scale value (Fosc/4/128) Pre-scale value (Fosc/4/256) Note that the use of the pre-scaler steps down the clock that reaches the timer/counter.
+For instance, an oscillator frequency of 48MHz used with a pre-scale value of 16 gives the timer/counter a clock with period 1/(48MHz/4/16).
+Figure 6.7 Timer0 register T0CON T0CON (Timer0 Control Register) TMR0ON T08BIT T0CS T0SE PSA T0PS2 T0PS1 T0PS0 ET1010 / ET0884 Microcontroller Applications Page 84 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The following block diagram shows in a schematic way, how the various registers affect the Timer0 operations. (optional) T0SE TMR0H:TMR0L 8/16-bit Timer/Counter registers T0CS T0PS2:T0PS PSA T0CON TMR0ON T08BIT Figure 6.8 Timer0 block diagram TMR0IF ET1010 / ET0884 Microcontroller Applications Page 85 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Example 1 Assuming the crystal oscillator (with Fosc 48 MHz) is used as the clock source and the pre-scaler is not used, how long does it take for Timer0 (used as 16-bit timer) to count from 0x0000 to 0xFFFF and roll over? Answer: Period 1 / (Fosc/4) 1 / (12MHz) 1/12 us Counting from 0x0000 to 0xFFFF and then rolling over is counting up 2 65536 times.
+So, total time 65536 x (1/12 us) 5.4613 ms Fosc/4 16 bit timer 0x0000 0x0001 0x0002 0xFFFE 0xFFFF 0x0000 Figure 6.9 Timer0 calculation example 1 ET1010 / ET0884 Microcontroller Applications Page 86 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Example 2 Assuming the crystal oscillator (with Fosc 48 MHz) is used as the clock source and the pre-scale value of 256 is used, how long does it take for Timer0 (used as 16-bit timer) to count from 0x0000 to 0xFFFF and roll over? Answer: The pre-scaler slows down the clock (i.e.
+clock frequency is stepped down by 256 times.
+Delay will become 256 times as long, as shown below: Period 1 / (Fosc/4/256) Total time 65536 x (256 x 1/12 us) 5.4613 ms x 256 1.3981 second This is the longest delay using Fosc 48 MHz.
+Fosc/4 16 bit timer 0x0000 0x0001 0x0002 0xFFFE 0xFFFF 0x0000 Figure 6.10 Timer0 calculation example 2 ET1010 / ET0884 Microcontroller Applications Page 87 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Example 3 Assuming the crystal oscillator (with Fosc 48 MHz) is used as the clock source and the pre-scale value of 32 is used, what is the starting count value in order that when the timer overflows (i.e.
+counts from 0xFFFF to 0x0000), exactly 0.1 second has elapsed? Answer: Step 1: Calculate the period of the clock signal that reaches the timer.
+With pre-scale value of 32, Period 1 / (Fosc/4/32) 2.667 us Step 2: Calculate the number of counts equivalent to a given duration.
+A duration of 0.1 second is equivalent to counting up (0.1s / 2.667 us ) 37500 times.
+Step 3: Determine the count value to start from, by subtracting the answer from Step 2 from 65536.
+Since the overflow occurs when 65535 0, we should start counting from (65536-37500 ) 28036 or 0x6D84 Step 3: count up from 28036 or 0x6D84 Step 2: 0.1 second count up 37500 times Fosc/4 16 bit timer 0x???? Step 1: clock period 2.667 0xFFFE 0xFFFF 0x0000 Figure 6.11 Timer0 calculation example 3 ET1010 / ET0884 Microcontroller Applications Page 88 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Lets go back to the original problem: turning on an LED 0.1 second after a button is pressed.
+As computed in Example 3 in the previous section, a 0.1 second delay can be achieved using Fosc 48 MHz, a pre-scale value of 32 and a starting count value of 0x6D84.
+The complete C program looks like this: T0CON 0b10000100 // Timer on, 16-bit, Fosc/4, pre-scaler 32 while (PORTBbits.RB0 1) // wait for button to be pressed INTCONbits.TMR0IF 0 // clear the flag TMR0H 0x6D // always write to TMR0H before TMR0L TMR0L 0x84 while (INTCONbits.TMR0IF 0) // wait here for Timer0 overflow // the previous 3 lines gives a delay of 0.1 second PORTDbits.RD0 1 // turn on LED Figure 6.12 Code to add a delay using Timer0 1.
+T0CON register is used to configure the timer (8 or 16 bit, clock source, clock edge if external clock is used, pre-scale value) and to turn on the timer.
+The timer will then start counting up, at the rate of the selected clock source.
+An appropriate starting count value is written to the TMR0H:TMR0L registers.
+TMR0H should be written to first, before TMR0L.
+Wait for the timer to overflow, by checking the TMR0IF bit of the INTCON register.
+ET1010 / ET0884 Microcontroller Applications Page 89 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Lengthening the delay There are several ways to lengthen the delay that Timer0 can produce, 1.
+Use Timer0 as 16-bit, instead of 8-bit.
+Use a lower frequency crystal (not easy for an assembled board).
+Use external clock and apply a slower clock at T0CK1.
+Use a bigger pre-scale value.
+Write a smaller number to TMR0H:TMR0L.
+How do you schedule a periodic event e.g.
+for the alarm to sound at 6 am every morning? Or for an LED to be toggled every 0.1 second? The complete C program to toggle an LED every 0.1 second follows: T0CON 0b10000100 // Timer on, 16-bit, Fosc/4, pre-scaler 32 while (1) // loop forever INTCONbits.TMR0IF 0 // clear the flag TMR0H 0x6D // always write to TMR0H before TMR0L TMR0L 0x84 while (INTCONbits.TMR0IF 0) // wait here for Timer0 overflow // the previous 3 lines gives a delay of 0.1 second PORTDbits.RD0 PORTDbits.RD0 // toggle RD0 Figure 6.13 Code to schedule a periodic event using Timer0 Steps to schedule a periodic event using Timer0 1.
+Use T0CON to configure turned on the timer, which will then start counting.
+Write a starting count to TMR0H:TMR0L.
+Check TMR0IF bit of INTCON register for timer overflow.
+Do something e.g.
+toggle LED, then go bac.
+to repeat.
+ET1010 / ET0884 Microcontroller Applications Page 90 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Delay using Timer Since Delay can also be introduced easily with a loop that does nothing, why bother with Timer? Answer 1.
+Timer can be used with interrupt (which will be covered in the next chapter), so the PIC can do other things while waiting for the time to pass.
+Answer 2.Timer that uses external clock becomes an event counter (i.e.
+how many times an event happens, but we will not discuss this usage).
+As mentioned, measuring elapsed time is opposite to scheduling an event.
+Lets try a simple application, measuring the pulse width of a signal: Signal How long is the high pulse? Start timing Stop timing Figure 6.14 Measuring pulse width Steps to measure a time duration using Timer0 1.
+The timer is configured turned on.
+When the low to high transition occurs, the timer is reset to start counting from 0x0000 (this is similar to resetting the stop watch).
+When the high to low transition occurs, the timer is stopped from counting further.
+The final count (multiplied by the clock period) gives the elapsed time i.e.
+the pulse width.
+We assume that the counter has not overflowed.
+You can modify the code below if the pulse width is long and overflow is likely.
+ET1010 / ET0884 Microcontroller Applications Page 91 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic T0CON 0b10000100 // Timer on, 16-bit, Fosc/4, pre-scaler 32 // other pre-scale value can be chosen while (PORTBbits.RB0 0) // wait for signal at RB0 to go high TMR0H 0x00 // reset timer -- always write to TMR0H first TMR0L 0x00 while (PORTBbits.RB0 1) // wait for signal at RB0 to go low T0CONbits.TMR0ON 0 // stop timer // the time elapsed is now in TMR0H:TMR0L.
+To extract the 16-bit // value, use unsigned integer time_elapsed as follows: TempLow TMR0L // read TMR0L first TempHigh TMR0H Time_elapsed TempHigh 256 + TempLow // Time_elapsed x 2.667 us then gives the real time elapsed Figure 6.15 Code to measure a time duration using Timer0 ET1010 / ET0884 Microcontroller Applications Page 92 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic As mentioned earlier, the four PIC18F4550 timers are very similar.
+We will not study everything after learning Timer0 in details, we will now learn the special features of Timer2 (-- refer to Figure 6.5 to note the key differences between Timer2 and Timer0).
+The diagram below shows how Timer2 works.
+TMR2 8-bit Timer register T2CKPS1:T2CKPS0 Comparator TMR2ON 8-bit Period register PR2 EQ TOUTPS3:TOUTPS0 T2CON Figure 6.16 Timer2 block diagram TMR2IF Timer2 is an 8-bit timer.
+The 8-bit register of Timer2 is called TMR2.
+Timer2 also has an 8-bit register called the period register (PR2).
+We can set the PR2 register to a fixed value and Timer2 will increment from 00 until it matches the value in PR2.
+Then, the equal (EQ) signal will reset TMR2 to 00, and depending on the post-scaler, may raise the TMR2IF flag.
+The clock source for Timer2 is Fosc/4 with the options of both pre-scaler and post-scaler, as shown in the figure above.
+There is no external clock source for Timer2.
+In other words, it cannot be used as a counter.
+ET1010 / ET0884 Microcontroller Applications Page 93 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The registers associated with Timer2 operations are the following: TMR2 (Timer2 Register) D7 D6 D5 D4 D3 D2 D1 D0 PR2 (Period Register) D7 D6 D5 D4 D3 D2 D1 D0 PIR1 (Peripheral Interrupt Flag Register 1) bit 1 TMR2IF (Timer2 Interrupt overflow Flag) TMR2IF TMR2 is reset to 0 whenever TMR2 matches PR2.
+If no post scaler is used, TMR2IF is set to 1 whenever the match occurs.
+With post scaler, many matches have to occur before TMR2IF is set.
+T2CON (Timer2 Control Register) D TOUTPS TOUTPS TOUTPS TOUTPS TMR2O N T2CKPS T2CKPS D7 not used TOUTPS3:TOUTPS0 D6 D5 D4 D3 TMR2ON D2 T2CKPS1:T2CKPS0 D1 D0 Timer2 output post-scaler selector 0 0 0 0 1:1 Post-scale value 0 0 0 1 1:2 Post-scale value 0 0 1 0 1:3 Post-scale value 1 1 1 1 1:16 Post-scale value Timer2 ON and OFF control bit 1 Enable (start) Timer2 0 Stop Timer2 Timer2 clock pre-scaler selector 0 0 1:1 Pre-scale value 0 1 1:4 Pre-scale value 1 X 1:16 Pre-scale value Figure 6.17 Timer2 registers TMR2, PR2, PIR1 and T2CON ET1010 / ET0884 Microcontroller Applications Page 94 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Lets see how we can write a C-program to turn on the LED at pin RD0 of PORTD when TMR2 reaches value 100: include void main (void) TRISDbits.TRISD0 0 PORTDbits.RD0 0 // configure RD0 as output // turn OFF LED at RD0 T2CON 0x00 TMR2 0x00 PR2 100 T2CONbits.TMR2ON 1 // Timer2, no pre-/post- scaler // TMR2 0 // load period register 2 // turn ON Timer2 while (PIR1bits.TMR2IF 0) // wait for TMR2IF to be raised PORTDbits.RD0 1 // turn ON LED at RD0 T2CONbits.TMR2ON 0 PIR1bits.TMR2IF 0 // turn OFF Timer2 // clear flag while (1) // stay here Figure 6.18 Code to add a delay using Timer2 To introduce the longest delay, use the maximum pre-scale value (16) and the maximum post-scale value (16), and load the period register with the biggest 8- bit number (255).
+Effective, Timer2 is clocked by Fosc / 4 / 16 / 16 ( 46875 Hz). This gives a clock period of 1/46875 s.
+TMR2 counting from 0 to 255 and back to 0 takes 256/46875 s 0.00546 s or 5.46 ms (max delay).
+ET1010 / ET0884 Microcontroller Applications Page 95 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic PWM (Pulse Width Modulation) is frequently used to control the speed of a DC motor.
+For instance, a small DC motor can be made to turn by applying a d.c.
+voltage (e.g.
+5V) to it.
+When 5V is applied, it turns at a certain speed.
+When the 75% duty cycle wave is applied, the motor slows down this is because effectively, it is getting 5V x 75% or 3.75V d.c.
+When the 50% duty cycle wave is applied, the motor slows down further, as it is effectively getting 2.5V d.c.
+100 % duty cycle 75 % duty cycle 50 % duty cycle 75 % of period is HIGH Period 50 % of period is HIGH Period Figure 6.19 100%, 75% and 50% duty cycle waves ET1010 / ET0884 Microcontroller Applications Page 96 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic PIC18F4550 has a CCP (Capture Compare) module.
+Compare means this: when a timer counts up to a certain value, an event is triggered (e.g.
+a certain pin set to high or toggled or) i.e.
+we can program an event to occur at a certain time.
+Capture means the opposite: when an event (e.g.
+low to high transition) occurs at a certain pin, the content of a timer is copied i.e.
+we know when the event occurs.
+We will not study Capture-Compare in this module.
+However, the CCP module comes with PWM capability and we will focus on just this.
+Point 1 The PWM output will appear at RC2 i.e.
+Port C, Pin 2.
+So RC2 must be made an output pin.
+TRISCbits.TRISC2 0 This pin is also called CCP1.
+Point 2 The bottom 4 bits of the CCP1 Control Register (CCP1CON) must be set to 1100 for PWM operation: CCP1CON 0b00001100 CCP1CON (CCP1 Control Register) D7 D6 DC1B1 DC1B0 CCP1M3 CCP1M2 CCP1M1 CCP1M0 1 1 0 0 for PWM mode Other combinations for Capture / Compare modes not studied in this module Figure 6.20 CCP register CCP1CON ET1010 / ET0884 Microcontroller Applications Page 97 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Sample calculations Assuming a 5 kHz, 25% duty cycle wave is required: Period 1 / 5k 0.2 ms.
+High Time Period x 25% 0.2 ms x 25% 0.05 ms.
+The Period is specified using PR2 register using the formula below: PWM period ( PR2 + 1 ) x 4 x N x Tosc where PR2 is the 8-bit Period register N Timer2 prescaler value of 1, 4 or 16, as set in T2CON register Tosc 1 / Fosc, where Fosc 48 MHz in our case Assuming pre-scaler N 16, and Tosc 1 / 48M.
+Substitute into formula: PWM period ( PR2 + 1 ) x 4 x N x Tosc 0.2m ( PR2 + 1 ) x 4 x 16 x (1 / 48M) PR2 149 Point 3 The High Time is specified using another register called CCPR1L, as follows: High Time 25% of Period 25% x 149 37.25 37 (truncate the decimal portion) CCPR1L 37 Point 4 ET1010 / ET0884 Microcontroller Applications Page 98 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Here, the High Time is specified using the 8-bit CCPR1L register.
+The accuracy can be extended to 10 bits (i.e.
+2 decimal places) if necessary.
+The details can be found in PIC18F4550 datasheet.
+PWM programming We will now put everything together to program the PIC18F4550 to produce a 5 kHz, 25% duty cycle PWM wave: TRISCbits.TRISC2 0 // RC2 as output CCP1CON 0b00 00 1100 // PWM mode Point 1 Point 2 PR2 149 // Period CCPR1L 37 // High Time TMR2 0 // start from 0 Point 3 Point 4 T2CON 0b0 0000 1 10 // no post-scale, Timer2 on, pre-scale 16 while (1) // PWM wave generated continuously at RC2, without further code // PIC free to do other things Output waveforms (optional) TMR2 First CCPR1L, then PR2 Period (PR2) High Time (CCPR1L) Comparator CCP1 (RC2) 1.
+RC2 goes high, TMR2 starts counting up from 0 2.
+TMR2 matches CCPR1L, RC2 goes low, TMR2 continues counting up 3.
+TMR2 matches PR2, RC2 goes high, TMR2 reset to 0 and the cycle is repeated Figure 6.21 Sequence of events to produce PWM output ET1010 / ET0884 Microcontroller Applications Page 99 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+Describe what is the difference between a timer and a counter? 2.
+Sketch a 5 kHz, 25% duty cycle wave with maximum amplitude of 5volts.
+Using a pre-scale value of 16, determine the starting count value so that when the timer overflows, exactly 0.025 second has elapsed.
+a.
+Calculate the period of the clock signal that reaches the timer.
+b.
+Calculate the number of counts equivalent to a given duration.
+c.
+Determine the count value to start from, by subtracting the answer from Step 2 from 65536.
+What is the longest delay that can be introduced using Timer2? 5.
+Give the binary pattern to be written to the T0CON register to turn on Timer0 as a 16-bit timer using internal clock (Fosc/4) and a pre-scale value of 32.
+ET1010 / ET0884 Microcontroller Applications Page 100 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic An interrupt is a hardware signal indicating that an event has occurred due to external or internal actions.
+This signal causes the microcontroller to halt the execution of the current instruction and jump to an Interrupt Service Routine (ISR) to execute code handling the triggered interrupt.
+Many peripherals e.g.
+I/O port, ADC, timer, serial port can be active simultaneously in a micro-controller application.
+The micro-controller needs to check for various events (e.g.
+a change in the voltage at an input pin, the completion of an A to D conversion, timer overflow, serial byte received) and responds appropriately.
+For instance, if a user presses a button (causing a change in the voltage at an input pin), the micro-controller may need to turn on a light.
+Or, when the A to D conversion (of a temperature input, say) is completed, the micro-controller may need to display the result on an LCD display.
+Or, when the timer overflows, it is time to switch off the heater.
+Time 12:34 Temp.
+32 deg.
+Figure 7.1 Many active peripherals, a busy automation micro-controller The micro-controller can respond to events by 2 methods: polling or interrupt.
+ET1010 / ET0884 Microcontroller Applications Page 101 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Polling The code below shows how polling is done, for 2 events: 1.) RB0 changes from 0 (low) to 1 (high) and 2.) Timer0 overflows: while (1) if (PORTBbits.RB0 1) . // do something if (INTCONbits.TMR0IF 1) // do something else // do other stuff, as micro-controller usually have a handful Micro-controller main prog 1.
+Any change in voltage? If so, do something.
+Input pin 2.
+Timer overflow? If so, do something.
+Timer 3.
+Other tasks to perform Figure 7.2 Polling method to respond to event As you can see, polling means checking in a round robin fashion and no priority can be assigned to the more important event i.e.
+if the micro-controller is busy responding to a change in voltage at a port pin, it cannot do anything else even if the more urgent Timer0 overflow occurs during this time.
+Sometimes, an event hardly occurs and the micro-controller wastes time polling for the event.
+ET1010 / ET0884 Microcontroller Applications Page 102 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Interrupt In the interrupt method, whenever a peripheral needs something to be done, it notifies the micro-controller, which stops whatever it is doing and serves the peripheral. (The program associated with the interrupt is called the interrupt service routine or ISR). After that, the micro-controller goes back to continue what it was doing.
+The interrupt method does not tie down the micro-controller (as you will see later) and allows priority to be assigned to the various events.
+Micro-controller main prog 3.
+Other tasks to perform Interrupt 1.
+Any change in voltage? If so, interrupt main prog.
+Input pin Interrupt 2.
+Timer overflow? If so, interrupt main prog.
+Timer Figure 7.3 Interrupt method to respond to event As an analogy, you could be reading newspaper the whole day (3 in above figure). But when the door bell rings (1) or there is a buzz tone on your hand phone (2), you are interrupted you stop reading your newspaper and go to open the door or reply to an SMS.
+After that, you continue reading your newspaper where you left off.
+We will learn only the basics of interrupt in this chapter, focusing on Timer0 interrupt and INT0 external hardware interrupt.
+We will also learn how an ISR (interrupt service routine) can be written.
+An interrupt service routine is a program / function used by a micro-controller to serve a peripheral or an event that needs attention.
+ET1010 / ET0884 Microcontroller Applications Page 103 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic In Chapter 6, we learn how to use Timer0 and Timer2 (briefly). Lets see how we can use Timer0 with Interrupt in this section.
+The complete C program to toggle an LED every 0.1 second follows.
+Take a few minutes to understand this (again).
+T0CON (Timer0 Control Register) TMR0ON T08BIT T0CS T0SE PSA T0PS2 T0PS1 T0PS0 TRISDbits.TRISD0 0 // RD0 as output T0CON 0b10000100 // Timer0 on, 16-bit, Fosc/4, pre-scaler 32 while (1) // loop forever TMR0H 0x6D // load Timer0 for a 0.1 second delay TMR0L 0x84 while (INTCONbits.TMR0IF 0) // wait for Timer0 overflow // the previous 3 lines gives a 0.1 second delay INTCONbits.TMR0IF 0 // clear the flag PORTDbits.RD0 PORTDbits.RD0 // toggle RD0 Figure 7.4 C code to toggle LED every 0.1 second The line highlighted in bold is checking for Timer0 overflow i.e.
+polling.
+Lets see what changes we need to make, if we decide to use interrupt instead of polling.
+To enable the Timer0 interrupt, we must first set both the GIE (Global Interrupt Enable) and the TMR0IE (Timer0 Interrupt Enable) bits in the INTCON register.
+INTCON (Interrupt Control Register) GIE TMR0IE TMR0IF You can consider GIE as the main switch, and TMR0IE as the switch for a particular light.
+Both must be switched on, before the light is turned on.
+The C-code to do this follows: INTCONbits.GIE 1 // Global Interrupt Enable INTCONbits.TMR0IE 1 // Timer0 Interrupt Enable ET1010 / ET0884 Microcontroller Applications Page 104 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic That is the easy part.
+The difficult part is, we must re-organise the C-code for polling (on the previous page) to change it into the C-code for interrupt (on the next page). The explanation follows: Explanatory Notes 1.
+The lines that need to be executed once before the while (1) loop still remain before the while (1) loop: set RD0 as output, turn on Timer0: 16 bits, Fosc/4, pre-scaler 32.
+Timer0 interrupt is enabled by setting both GIE (Global Interrupt Enable) and TMR0IE (Timer0 Interrupt Enable).
+The lines that need to be executed when Timer0 overflows have been moved from the while (1) loop to the interrupt service routine (called my_Timer0_isr or any other suitable name). Note however that the line that polls for Timer0 overflow i.e.
+while (INTCONbits.TMR0IF 0) is NO LONGER required, as interrupt is used, instead of polling.
+When TMR0IF becomes 1, the micro- controller will be notified.
+NEW interrupt code for Timer0 // The compiler will place this at a predefined location: 0x0008 for high // priority interrupt service routine. (Similarly, 0x0018 for low priority // interrupt service routine and 0x0000 for reset service routine.) void interrupt my_Timer0_isr (void) TMR0H 0x6D TMR0L 0x84 INTCONbits.TMR0IF 0 PORTDbits.RD0 PORTDbits.RD0 void main (void) TRISDbits.TRISD0 0 T0CON 0b10000100 INTCONbits.GIE 1 INTCONbits.TMR0IE 1 while (1) // micro-controller freed to do other things here Figure 7.5 Changing code from polling to interrupt ET1010 / ET0884 Microcontroller Applications Page 105 of 140 ORIGINAL polling code for Timer0 ..main TRISDbits.bTRISD0 0 T0CON 0b10000100 while (1) TMR0H 0x6D TMR0L 0x84 while (INTCONbits.TMR0IF 0) INTCONbits.TMR0IF 0 PORTDbits.RD0 PORTDbits.RD0 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 4.
+As a result of 3 above, the micro-controller is not kept busy (checking for TMR0IF to become 1 ). It is now free to do other things.
+Of course, what it does with the free time depends on the application.
+() Checking Timer0 overflow all the time is like checking if there is a visitor at the door constantly you might as well just read your newspaper Note that when Timer0 overflows, whatever need to be done will still be done the micro-controller will not be spared this effort 5.
+The codes that handle Reset, High Priority Interrupt, Low Priority Interrupt must start at specific memory locations (called interrupt vectors), as follows: Interrupt Power-on Reset High Priority Interrupt Low Priority Interrupt Location (hex) If priority feature is not used, all interrupts are treated as high priority interrupts.
+This is what is happening here i.e.
+our Timer0 interrupt is high priority, to be served at location 0x0008.
+A low priority interrupt service routine will appear like this: void interrupt low_priority name_of_ISR (void) Note that from 0x0008 to 0x0018, there are only a few bytes (16 bytes to be exact). If the code to service the high priority interrupt is longer than 16 bytes, it may be necessary to write the code elsewhere and a GOTO is placed at 0x0008 to branch there.
+We will not discuss this further.
+In the lab, a boot-loader is used in the PIC18F4550.
+This program downloads a user program from a PC via the USB port.
+The use of the boot-loader program affects the placement of the ISR.
+Again, we will not discuss this further.
+To recap, so far we have re-examined the C-code that toggles an LED every 0.1 second and re-organised the code so that we dont have to poll for Timer0 overflow.
+Instead interrupt is used and when Timer0 overflows, interrupt occurs and whatever needs to be done will be carried out by the interrupt service routine.
+Changing from polling to interrupt in effect, pass the role of event checking from the C-code to the hardware.
+If you wish to know which lines of the C-code the micro-controller will execute, before and after Timer0 overflows, read the optional material below: ET1010 / ET0884 Microcontroller Applications Page 106 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Timer0 interrupt execution sequence (Optional) // At location 0x0008 void interrupt my_Timer0_isr (void) void main (void) // set up, including interrupt while (1) // assume the micro-controller does these lines all the time, // when not interrupted by Timer0 overflow: // statement_1 // statement_2 // statement_3 // statement_4 Figure 7.6 Which lines get executed, before and after an interrupt? After setting up (A), including interrupt, the statements 1-4 get executed, over and over again (B, C).
+If Timer0 overflows (i.e.
+TMR0IF1 and interrupt occurs) when the micro- controller is executing statement_2 (D), it will finish the line of code before serving the Timer0 interrupt.
+To handle the interrupt, it will go to the interrupt service routine (my_Timer0_isr) at location 0x0008 and execute the code there (E).
+After executing the routine, the micro-controller will return to where it was i.e.
+to continue running from statement_3 (F, G), until another interrupt.
+ET1010 / ET0884 Microcontroller Applications Page 107 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The PIC18F4550 has 3 external hardware interrupts: INT0, INT1 and INT2 which use pins RB0, RB1 and RB2 respectively.
+We will discuss INT0 (and INT1 and INT2 are similar in terms of operation).
+The INT0 interrupt responds to a change of voltage (from low to high default) i.e.
+a transition at RB0.
+To enable the INT0 interrupt, we must first set both the GIE (Global Interrupt Enable) and the INT0IE (INT0 Interrupt Enable) bits in the INTCON register.
+INTCON (Interrupt Control Register) GIE INT0IE INT0IF When there is a rising edge at RB0, the INT0IF bit of the INTCON register will be set.
+The follow C-code has been written to toggle the LED at RD0 whenever there is a rising edge (i.e.
+a low to high transition) at RB0: TRISBbits.TRISB0 1 // RB0 as input TRISDbits.TRISD0 0 // RD0 as output while (1) // loop forever while (PORTBbits.RB0 0) // wait for RB0 to become 1 PORTDbits.RD0 PORTDbits.RD0 // toggle RD0 while (PORTBbits.RB0 1) // wait for RB0 to become 0 Figure 7.7 C code to toggle LED every time there is a rising edge at RB0 As before, we will re-organise the C-code for polling (on the previous page) to change it into the C-code for interrupt (on the next page).
+ET1010 / ET0884 Microcontroller Applications Page 108 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic INT0 (external hardware) interrupt code // The compiler will place this high priority interrupt service routine // at the predefined location 0x0008.
+void interrupt my_INT0_isr (void) INTCONbits.INT0IF 0 // clear flag PORTDbits.RD0 PORTDbits.RD0 void main (void) TRISBbits.TRISB0 1 TRISDbits.TRISD0 0 INTCONbits.GIE 1 INTCONbits.INT0IE 1 while (1) // micro-controller freed to do other things here Statement_1 Statement_2 Statement_3 Figure 7.9 INT0 interrupt code Note that the INT0IF flag must be cleared in the interrupt service routine.
+Figure 7.10 INT0 interrupt code execution sequence For INT0 (and also INT1 and INT2), it is also possible for interrupt to occur when there is a falling edge (i.e.
+a high to low transition) at RB0.
+This is done by clearing the INTEDG0 bit of the INTCON2 register.
+INTCON2 (Interrupt Control Register 2) INTEDG0 INTEDG0 0: INT0 interrupt on falling edge at RB0 INTEDGO 1: INT0 interrupt on rising edge at RB0 (power-on reset default) ET1010 / ET0884 Microcontroller Applications Page 109 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic How do you use both Timer0 and INT0 (external hardware) interrupts together in a program? The program outline below shows how: // function prototypes void my_Timer0_isr (void) void my_INT0_isr (void) // code at location 0x0008 void interrupt my_isr (void) if (TMR0IF 1) my_Timer0_isr if (INT0IF 1) my_INT0_isr void my_Timer0_isr (void) // service Timer0 overflows INTCONbits.TMR0IF 0 // clear flag void my_INT0_isr (void) // service rising edge at RB0 INTCONbits.INT0IF 0 // clear flag void main (void) // set up // enable interrupts while (1) // do other things here Figure 7.11 Program (outline) to service multiple interrupt sources PIC18F4550 have many interrupt sources 1.
+Timer1/2/3 interrupts (beside Timer0) 2.
+External hardware interrupts INT1/2 (beside INT0) 3.
+Serial comm.
+receive/transmit interrupts 4.
+PORTB changed, interrupt occurs) 5.
+ADC interrupt 6.
+CCP (compare/capture/PWM) interrupts ET1010 / ET0884 Microcontroller Applications Page 110 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic By default, all interrupts are high priority, to be served from 0x0008.
+It is also possible to make some interrupts high priority (to be served from 0x0008) and others low priority (to be served from 0x0018).
+This is done by setting the IPEN (Interrupt Priority ENable) bit in the RCON register.
+When interrupt priority is enabled, we must classify each interrupt source as high priority or low priority.
+This is done by putting 0 (for low priority) or 1 (for high priority) in the IP (interrupt priority) bit of each interrupt source.
+The IP bits for the different interrupt sources are spread across several registers INTCON, INTCON2, INTCON3, IPR1 and IPR2.
+We will not go into the details of all these.
+A higher priority interrupt can interrupt a low priority interrupt but NOT vice-versa.
+So, if you are reading the newspaper (your while(1) loop) and your hand phone buzzes (low priority interrupt), you stop reading the newspaper to reply an SMS (low priority interrupt service routine).
+While doing that, the door bell rings (high priority interrupt), you stop messaging to open the door for your mom (high priority interrupt service routine).
+After that, you can return to your message, followed by the newspaper.
+Summary In the interest of time, this chapter only focuses on Timer0 interrupt and INT0 external hardware interrupt.
+We discuss the differences between polling and interrupt, how to enable interrupt, how to write interrupt code and the sequence of code execution when interrupt occurs.
+ET1010 / ET0884 Microcontroller Applications Page 111 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+Fill in the table below to show the differences between the 2 methods by which a micro-controller can respond to events.
+Polling Interrupt Can priority be assigned to events? Does micro-controller have to monitor continuously? 2.
+Which of the following conditions is/are necessary in order for Timer0 overflow to be serviced by an interrupt service routine? A.
+Global Interrupt Enable bit (in the INTCON register) must be set.
+B.
+Timer0 (Overflow) Interrupt Enable bit (in the INTCON register) must be set.
+C.
+Timer0 overflow has occurred i.e.
+Timer0 Overflow (Interrupt) Flag bit (in the INTCON register) is set.
+Write the C-code to enable the interrupt INT0.
+ET1010 / ET0884 Microcontroller Applications Page 112 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 4.
+Show the sequence of execution i.e.
+which C statement is executed first, which second etc, for the case where the first rising edge at RB0 occurs when the PIC is executing Statement_2 for the first time.
+Code Location C Code Sequence Number my_INT0_isr INTCONbits.INT0IF 0 my_INT0_isr PORTDbits.RD0 PORTDbits.RD0 main main main main main main main TRISBbits.TRISB0 1 TRISDbits.TRISD0 0 INTCONbits.GIE 1 INTCONbits.INT0IE 1 Statement_1 Statement_2 Statement_3 ET1010 / ET0884 Microcontroller Applications Page 113 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Serial Transfer Sender Receiver Sender Parallel Transfer Receiver Serial data transfer is slower, but costs less as less wire is required.
+PIC18F4550 is an 8-bit micro-controller.
+The 8-bit data that it usually handles must be converted using a parallel-in-serial-out shift register, before serial transmission.
+If the serial data is to be transferred over the telephone line, a modem is required.
+Modulation means converting the binary data (0s and 1s) into audio tones while demodulation means the reverse.
+ET1010 / ET0884 Microcontroller Applications Page 114 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The synchronous method transfers a block of data (multiple bytes) at a time whereas the asynchronous method transfers a single byte at a time.
+Special IC chips are made to make it easier to do serial data communication.
+They are called UART (universal asynchronous receiver-transmitter) and USART (universal synchronous-asynchronous receiver-transmitter).
+PIC18F4550 has a built-in USART, to be described in a later section.
+Byte 4 Byte 3 Byte 2 Byte 1 A B Synchronous transfer ..idle Byte 2 ..idle Byte 1 A B Asynchronous transfer ET1010 / ET0884 Microcontroller Applications Page 115 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The following shows how two devices can communicate with each other.
+Device A Simplex Transmitter Device B Receiver Device A Half Duplex Transmitter Receiver Device B Transmitter Receiver Device A Device B Full Duplex Transmitter Receiver Receiver Transmitter ET1010 / ET0884 Microcontroller Applications Page 116 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Two parties that communicate with one another must agree on a protocol i.e.
+a set of rules to make sense of the serial data how the data is packed, how many bits constitute a character, and when the data begins and ends.
+For instance, the ASCII A or 0x41 or 0b01000001 can be framed in the following way: One character D7 D0 Goes out last Goes out first The start bit is always one bit but the stop bit can be one or two bits.
+The start bit is always a 0 (low) and the stop bit(s) is 1 (high).
+Note that LSB (D0) is sent out first.
+When there is no transfer, the signal is 1 (high) which is referred to as mark.
+The data can be 7 bits wide or 8 bits wide (as in the above example).
+In some system, the parity bit of the character byte is included in the data frame (before the stop bit) to maintain data integrity.
+The parity bit is odd or even.
+In the case of odd parity bit, the number of 1s in the data bit, including the parity bit, is odd.
+The rate of data transfer in serial data communication is stated in bps (bits per second). Sometimes, this is referred to as the baud rate.
+We will later learn how to specify the data transfer rate, how many data bit, whether to use odd/even/no parity and how many stop bit when serial communication is used in PIC18F4550.
+ET1010 / ET0884 Microcontroller Applications Page 117 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic RS232 is the most widely used serial I/O interfacing standard, which allows PCs and numerous types of equipment made by different manufacturers to be connected to one another.
+In RS232, a 1 is represented by -3 to -25 V while a 0 is represented by +3 to +25 V.
+To connect any RS232 equipment to a micro-controller that produces TTL voltages (0 V for 0 and 5 V for 1), a voltage converters such as MAX232 or MAX233 (a kind of line driver) can be used.
+The connector used for the serial data cable can be male / female, 9-pin (so called DB9) or 25 pins (DB25).
+The simplest connection between a PC and a micro-controller requires a minimum of 3 pins: Tx (Transmit), Rx (Receive) and ground, as shown below.
+Ensure that the Tx of one equipment goes to the Rx of the other equipment.
+Sometimes, other pins e.g.
+CTS (Clear To Send) are also used for hand- shaking.
+0 0 V 1 5 V PIC +15V PC (with MAX232) MAX232 Tx Rx Gnd Tx Rx Gnd Rx Tx A PIC communicating with another PIC may do away with the MAX232, so that they communicate using TTL voltages.
+Still, Tx and Rx must be interchanged.
+ET1010 / ET0884 Microcontroller Applications Page 118 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Nowadays, COM ports (RS232 ports on a PC) are disappearing and replaced by USB ports.
+A COM-to-USB converter allows PC with only USB port to control devices with only RS232 interface e.g.
+a thermal label printer.
+As can be seen below, Tx (transmit) shares pin 25 with RC6 etc while Rx (receive) shares pin 26 with RC7 etc.
+The following diagram shows how a PIC18F4550 can be connected to a MAX 233 (voltage converter) and then to a DB9 connector.
+One advantage of using MAX 233 (or MAX 232) is that only a 5 V supply is needed although it converts TTL voltages to higher RS232 voltages.
+The voltage converter has 2 sets of line drivers, but only one set is used below.
+ET1010 / ET0884 Microcontroller Applications Page 119 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic MAX232 requires 4 capacitors while the more expensive MAX233 does not require any capacitor (so save PCB space). However, the two are not pin-to-pin compatible.
+Vcc MAX233 Vcc PIC18F4550 Tx Rx DB9 TTL side RS232 side Figure 8.8 Connecting PIC18F4550 to MAX233 and then to DB9 ET1010 / ET0884 Microcontroller Applications Page 120 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic PIC18F4550 serial port operations require setting up (or writing to) / checking (or reading from) a number of registers.
+Lets start with SPBRG.
+Below, the registers will be described in just enough details to get things going.
+You can always read up the PIC18F4550 data-sheet or a good book, or do a Google-search, if you are working on a PIC18 serial comm.
+project and get stuck.
+You can check whether your PIC-based system can send or receive data through its serial port by connecting it (see Figure 8.8 / 8.6) to the COM port of an IBM PC/compatible and running the Hyper-Terminal software on the PC.
+Some of the common baud rates supported by PC Hyper-Terminal are: 1,200 2,400 4,800 9,600 19,200 38,400 57,600 115,200 The PIC18 transfers and receives data serially at many different baud rates.
+The baud rate in the PIC18 is programmable with the help of the 8-bit register called SPBRG.
+For a given crystal frequency, the value loaded into the SPBRG decides the baud rate.
+The relation is given by the formula: Desired Baud Rate Fosc / 64 ( X + 1 ) Where X is the value loaded into the SPBRG register.
+Assuming Fosc 48 MHz and desired baud rate 9,600 9,600 48 x 10 / 64 ( X + 1 ) So, X 77.125 77 (nearest integer) The C-code is simply SPBRG 77 The error introduced by the rounding can be determined as follows.
+With X 77 (instead of 77.125), baud rate 48 x 10 / 64 ( 77 + 1 ) 9615.385 ( 0.16% error - insignificant) ET1010 / ET0884 Microcontroller Applications Page 121 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic For a byte of data to be transmitted via the TX pin, it must be written to the TXREG register an 8-bit register.
+The C-code is simply TXREG byte_out When this happens, the byte is fetched into the Transmit Shift Register (TSR - not accessible by the programmer) which frames it with the start and stop bits and then transfers the 10-bit data serially out via the TX pin.
+When the data bits are received serially via the RX pin, the PIC de-frames them by eliminating the stop and start bits, making a byte out of the data received, and then placing it in the RCREG register.
+The C-code to read the data received is byte_in RCREG This is an 8-bit register used to select the synchronous/asynchronous mode, 8- bit/9-bit data transmission, high/low baud rate, enable/disable transmit, among other things.
+ET1010 / ET0884 Microcontroller Applications Page 122 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Figure 8.9 TXSTA register To select the asynchronous mode, 8-bit data, low baud rate and to enable transmit, write 0b00100000 (or 0x20) to TXSTA.
+Bit 2 or BRGH can be used to select a higher baud rate (explained in the boxed below).
+ET1010 / ET0884 Microcontroller Applications Page 123 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Higher Baud Rate There are 2 ways to increase the baud rate of data transfer in the PIC18F4550: 1.
+Use a higher-frequency crystal 2.
+Set bit 2 (or BRGH) of the TXSTA register and use a different formula to compute the value to be put into SPBRG The new formula with BRGH 1 is Desired Baud Rate Fosc / 16 ( X + 1 ) The previous formula with default BRGH value of 0 is Desired Baud Rate Fosc / 64 ( X + 1 ) ET1010 / ET0884 Microcontroller Applications Page 124 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic This is an 8-bit register used to enable/disable the serial port, select 8-bit/9-bit data reception, enable/disable receiver, among other things.
+Figure 8.10 RCSTA register To enable the serial port, select 8-bit data, and enable receiver, write 0b10010000 (or 0x90) to RCSTA.
+ET1010 / ET0884 Microcontroller Applications Page 125 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Two bits of the PIR1 register are used by USART - TXIF and RCIF.
+TXIF (transmit interrupt flag) 1 indicates that the previous byte has been transmitted and a new byte can be written to the TXREG register.
+RCIF (receive interrupt flag) 1 indicates that a new byte has been received and can be read from the RCREG register.
+Instead of polling, we can use interrupt.
+But this will not be discussed here.
+Figure 8.11 PIR1 register ET1010 / ET0884 Microcontroller Applications Page 126 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 8.3 C-code for serial communication 8.4.1 Programming the PIC18 to transmit data serially The steps to transmit 8-bit data serially is as follows: Make RC6 of PORTC i.e.
+Tx pin an t t // TRISCbits.TRISC6 Enable serial port // RCSTAbits.SPEN Set asynchronous mode, 8-bit data, low baud rate, enable transmit.
+// TXSTA 0x20 Set baud rate e.g.
+9600, with 48 MHz F // SPBRG Still have data to transmit? no yes continue elsewhere control statement such as for, while can be used here Write byte to be transmitted to TXREG // TXREG d yes TXIF 1 i.e.
+previous byte transmitted? no // while (PIR1bits.TXIF Figure 8.12 Flowchart for serial transmission ET1010 / ET0884 Microcontroller Applications Page 127 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The steps to receive 8-bit data serially is as follows: Make RC7 of PORTC i.e.
+Rx pin an input // TRISCbits.TRISC7 Enable serial port, 8-bit data, enable receiver.
+// RCSTA 0x90 Set low baud rate.
+// TXSTA 0x00 Set baud rate e.g.
+9600, with 48 MHz F // SPBRG Still expecting data? no yes continue elsewhere control statement such as for, while can be used here no RCIF 1 i.e.
+entire byte received? yes // while (PIR1bits.RCIF 0) Read byte received, from RCREG // data_in RCREG Figure 8.13 Flowchart for serial reception ET1010 / ET0884 Microcontroller Applications Page 128 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The following program continuously transmits data from an array (data_out) and receives data into another array (data_in).
+A.
+Write one byte to be transmitted to TXREG B.
+Check if byte received C.
+Read byte received from RCREG D.
+Make RC6 i.e.
+Tx of PORT C an output pin E.
+Set baud rate 9600 F.
+Enable serial port, 8-bit reception and enable receiver G.
+Enable 8-bit transmission, select asynchronous mode low baud rate H.
+Make RC7 i.e.
+Rx of PORT C an input pin I.
+Check if OK to transmit byte TRISCbits.TRISC6 0 // Configure Port C Pin 6 as a Digital Output (UART TX) TRISCbits.TRISC7 1 // Configure Port C Pin 7 as a Digital Input pin (UART RX) RCSTA 0x90 // Configure UART Receiver TXSTA 0x20 // Configure UART Transmitter SPBRG 77 // Configure UART Baud rate to 9600 bps t 0 // t is index to array of data to be transmitted r 0 // r is index to array for data received while (1) if (PIR1bits.TXIF 1) // Check if UART transmission has completed TXREG data_out t // Transmit 1 byte on UART t++ if (PIR1bits.RCIF 1) // Check if received 1 byte in UART buffer data_in r RCREG // Read 1 byte from UART receive buffer r++ // do other things here ET1010 / ET0884 Microcontroller Applications Page 129 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic 1.
+What do you think the receiver must have to convert the serial data it receives into 8-bit data that it usually handles? 2.
+If even parity is used, what is the parity bit for the ASCII A i.e.
+0b01000001? Determine the value to write to the SPBRG register to configure the UART module to generate a baud rate of 9,600 assuming Fosc 8 MHz 4.
+How many times will the baud rate increase if BRGH 1 assuming that the value in the SPBRG register remains unchanged? ET1010 / ET0884 Microcontroller Applications Page 130 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Today Microcontrollers are at the heart of the implementation of many industrial applications ranging from Aerospace, Automotive to more basic applications for household appliances form refrigerators and washing machines.
+Modern industrial microcontroller applications, we are shifting away from Single Microcontroller to Multi Microcontroller implementations due to the rising complexities of these applications.
+Typical use cases for such distributed embedded systems are in the Aviation and Automotive industries.
+The main driving factors are usually attributed to higher complexity and safety considerations required several microcontrollers to be deployed.
+Also the latest trends in the industry are a shift to connected and intelligent devices linked by an ecosystem of smart IoT devices.
+At the heart of every IoT device is always a microcontroller or microprocessor interfaces to various sensors and actuators.
+This chapter introduces several real world examples of how microcontrollers are used in industrial applications.
+ET1010 / ET0884 Microcontroller Applications Page 131 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The modern automotive vehicle is essentially an Embedded Distributed System comprising of several ECUs (Electronic Control Units) each powered by at least 1 Microcontroller.
+Each ECU is then connected to 1 or more ECUs via a central vehicle bus implemented based on CAN, Ethernet or for older systems asynchronous communication serial buses such as UART or LIN.
+Modern automotive vehicles support many different functionalities from safety critical ECUs controlling braking, powertrain to other ECUs controlling the door locking system, security system, headlight and turn lights, etc.
+These functionalities are implemented and distributed across several ECUs with each ECU comprising a minimum of 1 microcontroller to several microcontrollers.
+Each microcontroller then runs its own software which then reads and controls any sensors and actuators that are directly connected to that particular ECU.
+The different ECUs cannot function in isolation and needs to frequently communicate with other ECUs to read addition sensor information or to control actuators that are connected to that ECU.
+Each ECU is connected to other ECUs in the vehicle via the CAN bus or for higher speed communication via the Automotive Ethernet bus.
+ET1010 / ET0884 Microcontroller Applications Page 132 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic A single ECU implements a specific domain function, for example: there are dedicated ECUs implementing features for the car central locking and security system, exterior lighting systems for headlights, turn lights, brake lights, etc.
+The diagram below illustrates a typical single ECU in an automotive vehicle and shows the typical Sensors and Actuators connected to the microcontroller for a Body Controller ECU.
+In this ECU, the microcontroller is used to implement several functions that control actuators such as the car horn, headlights, signal turn lights, door locks and other devices.
+Also for several of the functions that require data from other ECUs in the vehicle, the CAN bus is connected to the microcontroller which via a CAN Transceiver in the System Basis Chip (SBC).
+The SBC is an external chip that is connected to the microcontroller via SPI (Serial Peripheral Interface). SBC also contains a LIN transceiver, Watchdog and Voltage Regulator and all these devices in the SBC can be controlled and monitored via SPI by the microcontroller.
+SPI is typically used in many embedded systems to communicate with on board ICs such as IO expanders, communication chips and many different peripherals as it required only 4 signals and is usually supported by most microcontrollers in hardware and software drivers.
+ET1010 / ET0884 Microcontroller Applications Page 133 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Internet of Things or simply IoT is a commonly accepted acronym today which basically describes electronic devices that have certain advanced features which typically allows for these IoT devices to be interconnected with other similar IoT devices.
+In addition, IoT devices also usually incorporate various Sensors and Actuators that enable the IoT devices to sense the environment that they are deployed and to perform actions via visual indicators, or the actuation of motors, etc.
+Microcontrollers are used to implement the basic functions required for a coffee machine, - Basic Functions o Boiling of water and monitoring the water temperature o Motor control of the coffee beans grinder IoT Functions o Control and monitoring of the coffee machine using a smart phone o Voice activated control of the coffee machine operations ET1010 / ET0884 Microcontroller Applications Page 134 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic The Trace Together Token was developed by the Singapore Government is good example of a small embedded device that has very strict requirements for low power to conserve the battery life and keep the token operational continuously for a few months.
+Basic components in the System Architecture of this device is shown below.
+The BLE System-On-Chip or SoC is basically a microcontroller with additional built-in peripherals for BLE Bluetooth Low Energy communication.
+Todays industrial applications usually integrate microcontrollers for applications that require reliable continuous long running operation.
+The management of the inactive mode of the microcontroller in low power mode is usually controlled by software to conserve the battery power.
+Low Power Management implemented in Software typically involves the control of the microcontroller internal hardware peripherals to turn on only peripherals that are required to perform certain functionalities required for the industrial application to work.
+For example, for automotive cars there is usually an ECU that implements the security and vehicle access functionality.
+The software running on this microcontroller has to periodically read all the door lock switches in a reduced or low power mode.
+ET1010 / ET0884 Microcontroller Applications Page 135 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Based on the example of an ARM Microcontroller, several different power modes are supported on the chip hardware level as shown in the diagram below.
+The software controls the microcontroller power modes by executing special assembly instructions and setting dedicated Special Function Registers (SFRs).
+In most embedded systems 2 main power modes are required, - High Power Mode o Microcontroller is in full power mode and most of its internal peripherals are clocked and active o Most of the software applications are running and active o In the ARM Microcontroller architecture, this corresponds to the Active Mode hardware power mode.
+- Low Power Mode o Microcontroller is in a reduced power mode and only essential internal peripherals o The microcontroller could wake up periodically from its reduced power state and then re-enter reduced mode to save power o In the ARM microcontroller, this corresponds to several possible states depending on the low power current consumption required, eg: from Sleep Mode to Hibernate Mode which has the lowest current consumption ET1010 / ET0884 Microcontroller Applications Page 136 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic In our Microcontroller Applications module the software code runs in a single loop.
+This is known as Bare Metal software programming as there is no Operating System running and the software runs directly on the microcontroller with no Middleware layer.
+However, in real world industrial applications, the software is much more running several in different time slices.
+This gives the illusion of the functions running in parallel but actually the software functions are sub divided into time slices which are then scheduled periodically.
+Therefore, the real time requirements and high software complexity is usually then implemented via a Real Time Operating System (RTOS).
+Most RTOS systems implement a basic scheduler that executes tasks or processes periodically and each task is assigned different priority levels as illustrated in the diagram below.
+ET1010 / ET0884 Microcontroller Applications Page 137 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic In the industry there are several vendors that implement RTOS with different license models.
+For Open Source free RTOS, Free RTOS is the most commonly used and has recently been acquired by Amazon and support IoT application development.
+RTOS FreeRTOS Integrity VxWorks Vendor Amazon GreenHills Wind River License MIT Open Source License Proprietary Closed Source Proprietary Closed Source With todays highly connected devices, Cyber Security and the secure storage and exchange of security sensitive data.
+To support basic Cybersecurity requirements, the microcontroller has to support some of the following basic features, - AES 256 o Hardware support for Symmetric Cryptography - RSA 2048 o Hardware support for Asymmetric Cryptography - Secure Storage o Storage of EEPROM data in a secure memory area with restricted access - Random Number Generator o Hardware based Random Number Generator for generating random numbers used for random seeds for encryption, etc.
+- Secure Boot o Security protected bootloader to prevent hackers from starting insecure applications.
+ET1010 / ET0884 Microcontroller Applications Page 138 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic Due to the rapidly increasing computational power required by embedded system devices today, the trend is to have several CPU cores physically fabricated on a single silicon die in a microcontroller.
+This means a single microcontroller has multiple cores and can execute instructions in parallel thus increasing the computational power.
+Based on Amdahls Law, increasing the number of cores or processors nearly proportionally also increases the Speedup or computational processing power.
+This trend for parallel processing to increase overall processing power throughput has led to the rise in popularity in Multi-Core Microcontrollers ranging from Dual Core devices up to Quad Core and higher number of CPU core microcontrollers.
+ET1010 / ET0884 Microcontroller Applications Page 139 of 140 Microcontroller Applications - ET1010 / ET0884 Singapore Polytechnic In this chapter several examples of how microcontrollers are used in industry were explained.
+Microcontrollers are at the heart of every modern embedded system and these systems are getting increasing complex due to higher requirements in processing power, Cyber Security and Low Power considerations.
+The current market trends and technical needs including the need for microcontrollers to run based on a Real Time Operating System (RTOS) was also explained in this chapter.
+These real world industrial applications discussed in this chapter will help to give you a context and background in preparation for your Microcontroller Applications mini project for this module.
+ET1010 / ET0884 Microcontroller Applications Page 140 of 140 MAPP Microcontroller Applications C-D-I-O Project Specifications 1.
+C-D-I-O Project All students taking the MAPP module are required to complete a C (conceive) D (design) I (implement) O (operate) project, as specified in this document.
+Conceive Design Implement Operate 2.
+Project Teams At the beginning of the semester, the students in each class will be grouped into teams of 3 (min) or 4 (max). The lecturer taking the class can decide on how the grouping is done.
+CDIOProjectSpecification Page1 MAPP 3.
+Basic Requirement The project must use a microcontroller.
+Time Available Module Assessments The project is to be done during the scheduled practical sessions (32 hours for MAPP, more than 4 weeks for ET0884) and contribute to 45% of the module assessment.
+The Schedule /Assessments in the Appendix shows the amount of time available for project, as well as the various assessments: C/D Presentation I ShowTell CDIOProjectSpecification Page2 MAPP 5.
+Conceive / Design (15% of module) Each project team will propose an interesting, useful (in solving a real problem) and original project idea.
+The project should also be feasible (i.e.
+doable by the students within the given time cost constraints) and cost-effective.
+The lecturer taking the class may set a project theme e.g.
+microcontroller applications that help the elderly.
+The theme can also be based on the course of study e.g.
+Clean Energy applications for students taking DEEE, Aerospace applications for students taking DASE etc.
+CDIOProjectSpecification Page3 MAPP 6.
+Design Thinking Tools for C/D Various tools can be used in the Conceive stage: Journalist (Interview) Imagine you are a newspaper reporter.
+Interview the target users to find out what they need.
+A-E-I-O-U (Observation) Observe the target users and take note of the activities, environment, interactions, objects and users.
+Other tools can be used in the Design stage: Brainstorming Come up with as many ideas as possible, based on your interviews / observation.
+Draw simple sketches to capture the ideas.
+Matrix for Generation Sort the ideas into 4 quadrants.
+Focus on high impact, high feasibility ideas.
+CDIOProjectSpecification Page4 MAPP Conceive Design Implement Operate TheCDstepsmap(roughly)to theEmpathyIdeationstepsina typicalDesignThinkingflow Empathy Ideation Prototype SimplifiedDesignThinkingflow 7.
+Block Diagram / Circuit Diagram / Flowchart After a project idea is selected, students will draw block diagram circuit diagrams (for the hardware design) flowchart (for the software design) and to plan an implementation schedule .
+Brightness Sensor Motion Detector Microcontroller BlockDiagram Relayto On/Off Lights CDIOProjectSpecification Page5 Flowchart Week Week Week Week MAPP Getboards/components Assemblecircuits ImplementationPlan Makeconnectors Writeprogram Integrate/Test/Debug DemotoLecturer DesignContest (forET1010only) If you find it impossible to complete the project within the limited time given, you will need to scale down your project scope.
+CDIOProjectSpecification Page6 MAPP 8.
+Presenting the Project Idea At the end of the C/D stages, students will make a 10-15 minute presentation of their work.
+In the presentation, describe the research/analysis of user needs done, describe how the application works, outline its key features, show the block diagram/circuit diagrams, flowchart, implementation plan etc.
+Use sketches, photos, video clips, models to demonstrate the project idea where appropriate.
+C/D Assessment Criteria Hastheteamdone goodresearch analysistounderstand userneeds?__/25 Hastheteamcomeup withacreativeidea/ solutiontotheusers problem?__/25 Hastheteamshownthattheproject isfeasiblewiththeblockdiagram, circuitdiagrams,flowchart implementationplan?__/25 Isthepresentation livelyengaging? Althoughgroupmarkscanbe awarded,individualstudentscan scorehigher/lower,depending onhis/hercontribution.
+CDIOProjectSpecification Page7 MAPP 10.
+Implement (30% of module) In the second term, students implement their project ideas and then do a show tell (i.e.
+a demo).
+The steps are outlined below: Getcomponents/boards FabricateIOcircuits/ connectors Programmemicrocontroller Integratehardware software Test/debugproject Showtell DesignContest (forET1010only) CDIOProjectSpecification Page8 MAPP 11.
+Project resources The PIC18F4550 Microcontroller Board and the Keypad/LCD Board can be signed out from the lab.
+Likewise, the Interface Board (which allows other IO circuits to tap power from the Microcontroller Board) can be signed out from the lab.
+Students have to fabricate other IO circuits on strip boards, with components from the MAPP Lab.
+Write-ups on many IO devices (IR, LDR, Motion Sensor, Tilt Switch, DC Motor, Servo Motor Solenoid, Relay, Distance Measurement, Temperature Sensor, Moisture Sensor, Real-Time-Clock, Voice Recording/Playback) are in the Blackboard.
+Students have to provide their own notebook (with software installed), soldering tools multi-meters etc.
+Students are also free to use other suitable I/O devices not available from the lab.
+However, they have to source pay for these themselves.
+Students should take good care of items on loan, as these must be returned at the end of the semester.
+Students will have to replace any lost/damaged items.
+CDIOProjectSpecification Page9 MAPP 12.
+Demonstrating the Project At the end of the I stage, students will do a 10-15 minute show tell of their work.
+In the show tell, outline the objective of the project what is it supposed to do? Do a demo run, briefly described the technical difficulties involved.
+I Assessment Criteria Didtheteamputineffort inimplementation?__/35 Istheproject workingi.e.a success?__/35 Istheshowtell livelyengaging? Canstudents answerquestions asked?__/30 Althoughgroupmarkscanbe awarded,individualstudentcan scorehigher / lower,depending onhis / hercontribution.
+Selected groups can be nominated to enter a Design Contest (at the end of Term 2). Bonus marks will be given to ALL participants.
+Certificates + Prizes will be given to the teams that come up with great idea, can do and can sell.
+- for ET1010 only CDIOProjectSpecification Page10 MAPP ThisistoshowtoamountoftimeavailablefortheCDIOproject.
+PleaserefertoBlackboardfortheactualscheduleforthissemester.
