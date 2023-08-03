@@ -1,8 +1,11 @@
 var flippedBack = false
+var canflip = true;
 var flashcardIndex = 0
-var flashcards = [];
+var flashcards = []
+var notesName = []
 
 $("#popupCard").click(function() {
+    if (!canflip) { return; }
     if (flippedBack) {
         document.getElementById("popupInner").classList.remove("flipCard")
     }
@@ -19,6 +22,7 @@ fetch("/getNotes")
     flashcardIndex = 0
     for (let i =0;i < json.length;i++) {
         console.log(json[i])
+        notesName = json
         var node = document.createElement("li")
         node.classList.add("nav-item")
 
@@ -28,12 +32,12 @@ fetch("/getNotes")
         innerLink.setAttribute("id", `notesIndex${i}`)
         innerLink.setAttribute("data-toggle", "tab")
         innerLink.setAttribute("style", "color: white;")
-        innerLink.innerHTML = json[i]
+        innerLink.innerHTML = notesName[i]
         innerLink.addEventListener("click", function() {tabsChanged(json[i])})
         node.appendChild(innerLink)
         notesList.appendChild(node)
     }
-    tabsChanged(json[0])
+    tabsChanged(notesName[0])
 })
 
 
@@ -142,6 +146,8 @@ function updateFlashcardData() {
     formData.append('flashcardIndex', flashcardIndex);
     formData.append('newKeyword', newKeyword);
     formData.append('newDefinition', newDefinition);
+    formData.append('fileName', notesName);
+    console.log(formData)
 
     fetch('/updateFlashcard', {
         method: 'POST',
@@ -150,25 +156,38 @@ function updateFlashcardData() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            flashcards[flashcardIndex]["keyword"] = newKeyword;
-            flashcards[flashcardIndex]["definition"] = newDefinition;
-            tabsChanged(''); 
+            tabsChanged(notesName[flashcardIndex]); 
         }
     });
 }
 
-document.getElementById("newKeyword").addEventListener("input", updateFlashcardData);
-document.getElementById("newDefinition").addEventListener("input", updateFlashcardData);
-
-function showUpdateForm() {
+function showUpdateForm() {    
     var updateForm = document.getElementById("updateForm");
-    if (updateForm.style.display === "none") {
+    //show
+    if (updateForm.style.display === "none") 
+    {
+        document.getElementById("updateButton").innerHTML = "Update info";
+        canflip = false;
         updateForm.style.display = "block";
-    } else {
+        document.getElementById("newKeyword").value = flashcards[flashcardIndex]["keyword"];
+        document.getElementById("newDefinition").value = flashcards[flashcardIndex]["definition"];
+    } 
+    else
+    //submit
+    {
+        document.getElementById("updateButton").innerHTML = "Edit";
+        canflip = true;
         updateForm.style.display = "none";
+        if (flippedBack) {
+            document.getElementById("popupInner").classList.remove("flipCard")
+        }
+        else {
+            document.getElementById("popupInner").classList.add("flipCard")
+        }
+        flippedBack = !flippedBack
+        updateFlashcardData();
+        updatePopupCard();
     }
-    updatePopupCard();
-    updateFlashcardData();
 }
 
 

@@ -7,7 +7,7 @@ from nltk.corpus import wordnet
 
 def get_keywords_with_definitions(textfile, num_keywords=12):
 
-    with open(os.getcwd() + "\\" + "\\pickle_notes\\" + textfile + "_pickle", "rb") as fp:  # Unpickling
+    with open(os.getcwd() + "\\pickle_notes\\" + textfile + "_pickle", "rb") as fp:  # Unpickling
         text = pickle.load(fp)
 
     tokens = get_clean_tokens(text)

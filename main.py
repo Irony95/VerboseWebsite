@@ -53,6 +53,18 @@ def upload():
                 print("extracting...")
                 et.extract_note(file.filename)
                 print("extracted")
+
+                flashcards = []
+                fileName = file.filename.split(".")[0]
+                generated_flashcards = gf.get_keywords_with_definitions(fileName)
+                for keyword, _, definition in generated_flashcards:
+                    card = {}
+                    card["keyword"] = keyword
+                    card["definition"] = definition
+                    flashcards.append(card)
+
+                write_flashcards(flashcards, fileName)
+
         return render_template('upload.html')
     
 #### Generate Flashcards
@@ -64,19 +76,8 @@ def login():
     flashcards = []
 
     if cards_value and len(cards_value.strip()) > 0:
-        cards_value2 = cards_value.split(".")[0]
-        generated_flashcards = gf.get_keywords_with_definitions(cards_value2)
-
-        for gf.keyword, _, gf.definition in generated_flashcards:
-            card = {}
-            card["keyword"] = gf.keyword
-            card["definition"] = gf.definition
-            flashcards.append(card)
-
-        write_flashcards(flashcards)
-        session['flashcards'] = flashcards
-    else:
-        flashcards = read_flashcards()
+        notesName = cards_value.split(".")[0]
+        flashcards = read_flashcards(notesName)
 
     return jsonify(flashcards)
 
@@ -87,7 +88,6 @@ def ask():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         json = request.get_json()
-        print(json)
         # Extract text from note into .txt and pickle file
         # If it already exists, no extraction is done
         # You can take this as the notes being stored into the cloud (maybe?)
@@ -112,26 +112,25 @@ def update_flashcard():
     new_keyword = request.form.get('newKeyword')
     new_definition = request.form.get('newDefinition')
 
-    flashcards = session.get('flashcards', [])
+    notesName = request.form.get("fileName").split(".")[0]
+    flashcards = read_flashcards(notesName)
     flashcards[flashcard_index]["keyword"] = new_keyword
     flashcards[flashcard_index]["definition"] = new_definition
-
-    session['flashcards'] = flashcards
-    write_flashcards(flashcards)
+    write_flashcards(flashcards, notesName)
 
     return jsonify(success=True)
 
 
 #### Saving file into a json
-def read_flashcards():
+def read_flashcards(notesName):
     try:
-        with open(FLASH_CARDS, "r") as file:
+        with open("flashcards\\" + notesName, "r") as file:
             return json.load(file)
     except FileNotFoundError:
         return []
 
-def write_flashcards(flashcards):
-    with open(FLASH_CARDS, "w") as file:
+def write_flashcards(flashcards, notesName):
+    with open("flashcards\\" + notesName, "w") as file:
         json.dump(flashcards, file)
 
 if __name__ == '__main__':
